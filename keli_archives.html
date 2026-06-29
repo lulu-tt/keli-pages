@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국고용노동교육원 | 학습자료실 AI 검색</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        keliBlue: {
+                            50: '#f0f5ff',
+                            100: '#e1ebff',
+                            500: '#0052cc', // KELI 메인 블루
+                            600: '#0043a8',
+                            900: '#003478'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .container-custom {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .bg-keli-blue {
+            background-color: #0052cc;
+        }
+        .text-keli-blue {
+            color: #0052cc;
+        }
+        .search-shadow {
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.08);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.25s ease;
+        }
+        .top-tab {
+            padding: 0 20px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .top-tab.active {
+            background-color: #ffffff;
+            color: #003478;
+            font-weight: 700;
+        }
+        .social-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 40px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sidebar-link.active {
+            background-color: #f0f5ff;
+            color: #0052cc;
+            font-weight: 700;
+            border-left: 4px solid #0052cc;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen bg-slate-50/50">
+
+    <!-- 1. GNB: Top Utility Bar (index_v1.html 준수) -->
+    <div class="bg-[#001d43] text-white overflow-hidden">
+        <div class="container-custom flex justify-between items-center !p-0">
+            <div class="flex items-center">
+                <a href="index_v1.html" class="top-tab">교육플랫폼</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5 active">정보플랫폼</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">기관소개</a>
+                <a href="mypage.html" class="top-tab text-white/70 hover:bg-white/5">마이페이지</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4 text-[12px]">
+                    <span class="text-white/80"><strong>홍길동</strong>님 로그인중</span>
+                    <a href="#" class="flex items-center gap-1.5 hover:text-blue-300"><i class="bi bi-box-arrow-right"></i> 로그아웃</a>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+                        <i class="bi bi-globe"></i> KO <i class="bi bi-chevron-down text-[8px]"></i>
+                    </div>
+                </div>
+                <div class="social-box">
+                    <a href="https://www.instagram.com/keli1005_/" target="_blank" class="hover:opacity-70"><i class="bi bi-instagram"></i></a>
+                    <a href="https://blog.naver.com/keli1005" target="_blank" class="hover:opacity-70"><i class="bi bi-chat-square-text"></i></a>
+                    <a href="https://pf.kakao.com/_xduqKK" target="_blank" class="hover:opacity-70"><i class="bi bi-chat-fill"></i></a>
+                    <a href="https://youtube.com/channel/UCvK7TabK73pdV8ZJFnCAsSA?si=wnr0osAcgcJeU5TV" target="_blank" class="hover:opacity-70"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. GNB: Main Header (index_v1.html 준수) -->
+    <header class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-sm relative">
+        <div class="container-custom py-4 flex justify-between items-center">
+            <div class="flex items-center gap-12 flex-1">
+                <!-- 로고 클릭 시 index_v1.html 이동 -->
+                <a href="index_v1.html" class="flex items-center gap-4 hover:opacity-90">
+                    <img src="img_signature_pc.png" alt="KELI Logo" class="h-11">
+                    <div class="w-[1px] h-5 bg-slate-200 mx-1"></div>
+                    <span class="text-[15px] font-bold text-[#333] tracking-tight">정보플랫폼</span>
+                </a>
+                
+                <!-- Main Navigation -->
+                <nav class="hidden lg:flex gap-10 text-[16px] font-bold ml-auto mr-12">
+                    <a href="keli_archives.html" class="text-keliBlue-500 hover:text-keliBlue-600 transition-colors">고용노동통합자료</a>
+                    <a href="#" class="text-[#333] hover:text-keliBlue-500 transition-colors">소식/참여</a>
+                    <a href="#" class="text-[#333] hover:text-keliBlue-500 transition-colors">Open API</a>
+                </nav>
+            </div>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center gap-6">
+                <button class="text-2xl text-slate-800 hover:text-keliBlue-500"><i class="bi bi-search"></i></button>
+                <div id="gnb-menu-toggle" class="flex flex-col gap-1.5 cursor-pointer group">
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keliBlue-500 transition-all"></span>
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keliBlue-500 transition-all"></span>
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keliBlue-500 transition-all"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메가 드롭다운 메뉴 (정보플랫폼 GNB 최신 스펙) -->
+        <div id="gnb-mega-menu" class="hidden absolute left-0 top-full w-full bg-white border-b border-slate-200 shadow-xl z-50">
+            <div class="container-custom py-10 grid grid-cols-3 gap-8">
+                <!-- Column 1: 고용노동통합자료 -->
+                <div class="border-r border-slate-100 pr-8">
+                    <div class="bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center">
+                        <h3 class="font-bold text-slate-800 text-[16px]">고용노동통합자료</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="keli_archives.html" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 통합검색</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 주제(테마)별 자료</a></li>
+                    </ul>
+                </div>
+                <!-- Column 2: 소식/참여 -->
+                <div class="border-r border-slate-100 pr-8">
+                    <div class="bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center">
+                        <h3 class="font-bold text-slate-800 text-[16px]">소식/참여</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 플랫폼소개</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 공지사항</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 고객의 소리</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 자주하는 질문</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 참여신청</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Open API -->
+                <div>
+                    <div class="bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center">
+                        <h3 class="font-bold text-slate-800 text-[16px]">Open API</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API 소개</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API Key 발급신청</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API 매뉴얼</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API 이용 테스트베드</a></li>
+                        <li><a href="#" class="hover:text-keliBlue-500 flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API 사용관련 기술문의</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. 메인 레이아웃 (LNB + AI 검색 본문 영역) -->
+    <main class="container-custom py-10 flex flex-col lg:flex-row gap-8 flex-1">
+        
+        <!-- 좌측 LNB (Left Navigation Bar) -->
+        <aside class="w-full lg:w-64 shrink-0 bg-white rounded-xl border border-slate-200 shadow-sm self-start overflow-hidden">
+            <!-- 그라데이션 헤더 -->
+            <div class="bg-gradient-to-br from-[#009b9e] to-[#0170a4] text-white p-6 relative overflow-hidden">
+                <h2 class="text-2xl font-bold relative z-10 tracking-wide">자료실</h2>
+                <div class="absolute -right-2 -bottom-2 text-white/10 text-6xl font-black select-none z-0">KELI</div>
+            </div>
+            
+            <!-- 서브 메뉴 목록 -->
+            <div class="divide-y divide-slate-100">
+                <!-- 아코디언 형태로 펼쳐지는 활성 메뉴 -->
+                <div class="bg-[#1e293b]">
+                    <button class="w-full flex justify-between items-center px-6 py-4 text-white font-bold text-[15px] text-left focus:outline-none">
+                        <span>통합검색</span>
+                        <i class="bi bi-chevron-up text-xs transition-transform duration-200"></i>
+                    </button>
+                    <!-- 하위 서브메뉴: AI 대화형 검색 활성화 -->
+                    <div class="bg-slate-50 border-t border-slate-200/50 py-3 px-6 space-y-2 text-[14px]">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#0052cc]"></span>
+                            <a href="#" class="text-[#0052cc] font-semibold underline">AI 대화형 검색</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                            <a href="#" class="text-slate-500 hover:text-slate-800 transition-colors">일반 검색</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="block px-6 py-4 text-slate-700 hover:bg-slate-50 font-medium text-[15px] transition-colors">주제(테마)별 자료</a>
+            </div>
+        </aside>
+
+        <!-- 우측 본문 영역 (대화형 고용노동 AI 검색 UI) -->
+        <section class="flex-1 space-y-8">
+            
+            <!-- 페이지 네비게이션 경로 -->
+            <div class="flex justify-between items-center">
+                <h2 class="text-[26px] font-bold text-slate-900 flex items-center gap-2">
+                    AI 지능형 자료 검색 <span class="text-xs bg-keliBlue-50 text-keliBlue-500 px-2.5 py-1 rounded-full font-bold">AGENTIC AI</span>
+                </h2>
+                <div class="text-[12px] text-slate-400 font-medium flex items-center gap-1.5">
+                    <span>홈</span> <i class="bi bi-chevron-right text-[8px]"></i> 
+                    <span>자료실</span> <i class="bi bi-chevron-right text-[8px]"></i> 
+                    <span class="text-slate-600 font-bold">AI 대화형 검색</span>
+                </div>
+            </div>
+
+            <!-- 영역 1: 상단 대화형 검색바 (Agentic Search Bar) -->
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-[0_8px_30px_rgba(0,82,204,0.04)] space-y-5">
+                <div class="space-y-1">
+                    <label class="text-[15px] font-bold text-slate-800 flex items-center gap-1.5">
+                        <i class="bi bi-chat-left-dots-fill text-keliBlue-500"></i> 무엇이든 물어보세요 (대화형 검색)
+                    </label>
+                    <p class="text-xs text-slate-400">키워드 필터 선택 없이, 필요한 조건이나 상황을 문장으로 편하게 질문하시면 관련 자료를 탐색해 드립니다.</p>
+                </div>
+                
+                <div class="relative flex items-stretch gap-3">
+                    <div class="relative flex-1 flex items-center">
+                        <!-- 넓고 세련된 대화형 검색창 -->
+                        <input id="agenticSearchInput" type="text" 
+                               value="스타트업 사업주가 꼭 알아야 할 노무 관리 자료 알려줘"
+                               placeholder="예: 사회복지시설 종사자가 참고할 만한 직무 교육 보고서를 모아줘" 
+                               class="w-full py-5 pl-8 pr-28 rounded-xl border border-slate-200 outline-none text-[15px] focus:border-keliBlue-500 transition-all font-medium bg-slate-50/50 focus:bg-white shadow-inner">
+                        <i class="bi bi-keyboard text-slate-400 absolute right-16 text-lg cursor-pointer hover:text-slate-600"></i>
+                    </div>
+                    
+                    <!-- 검색 실행 단추 -->
+                    <button onclick="triggerAISearch()" class="flex items-center justify-center gap-2 px-8 rounded-xl bg-gradient-to-r from-blue-600 to-keliBlue-500 hover:from-blue-700 hover:to-keliBlue-600 text-white font-bold text-[15px] shadow-md shadow-keliBlue-500/10 active:scale-95 transition-all whitespace-nowrap">
+                        <i class="bi bi-sparkles text-sm"></i>
+                        <span>AI 분석 및 검색</span>
+                    </button>
+                </div>
+
+                <!-- 추천 프롬프트 / 칩 추천 영역 -->
+                <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-50">
+                    <span class="text-xs font-bold text-slate-400 mr-2 flex items-center gap-1"><i class="bi bi-lightbulb"></i> AI 제안 키워드:</span>
+                    <button onclick="applyPrompt('최근 인기 있는 노동법 브리프 자료 보여줘')" class="px-3.5 py-1.5 bg-slate-50 hover:bg-keliBlue-50 hover:text-keliBlue-500 border border-slate-200/60 rounded-full text-xs text-slate-500 transition-all font-medium">#최근 인기 노동법 브리프</button>
+                    <button onclick="applyPrompt('사회복지시설 인사관리 가이드 및 동영상 교육 찾기')" class="px-3.5 py-1.5 bg-slate-50 hover:bg-keliBlue-50 hover:text-keliBlue-500 border border-slate-200/60 rounded-full text-xs text-slate-500 transition-all font-medium">#사회복지시설 인사관리</button>
+                    <button onclick="applyPrompt('2026년 개정 근로기준법 설명 영상 및 교육 교안')" class="px-3.5 py-1.5 bg-slate-50 hover:bg-keliBlue-50 hover:text-keliBlue-500 border border-slate-200/60 rounded-full text-xs text-slate-500 transition-all font-medium">#개정 근로기준법 영상</button>
+                </div>
+            </div>
+
+            <!-- 영역 2: 중간 AI 요약 및 대화 영역 (AI Insight Panel) -->
+            <div id="aiInsightBox" class="bg-gradient-to-br from-keliBlue-50 via-white to-emerald-50/20 p-8 rounded-2xl border border-keliBlue-100 shadow-sm relative overflow-hidden transition-all duration-300">
+                <div class="absolute -right-10 -bottom-10 text-keliBlue-500/[0.03] text-9xl font-black select-none pointer-events-none">AI</div>
+                
+                <div class="flex items-start gap-4">
+                    <!-- AI 아바타 아이콘 -->
+                    <div class="w-10 h-10 rounded-xl bg-keliBlue-500 text-white flex items-center justify-center flex-shrink-0 text-base font-bold shadow-md shadow-keliBlue-500/20">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    
+                    <div class="flex-1 space-y-4">
+                        <!-- AI 요약 내용 헤더 -->
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-base">KELI AI 핵심 요약 브리프</h3>
+                                <p class="text-[11px] text-slate-400 font-medium">학습자료 588건의 데이터베이스에서 연관성 높은 3건을 즉시 추출했습니다.</p>
+                            </div>
+                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-full text-[11px] font-bold flex items-center gap-1 shadow-sm">
+                                <i class="bi bi-check-circle-fill"></i> 신뢰도 98%
+                            </span>
+                        </div>
+                        
+                        <!-- AI 요약 텍스트 본문 -->
+                        <div class="text-[14px] text-slate-700 leading-relaxed font-medium bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-white shadow-inner">
+                            "스타트업 초기 단계의 기업들은 **근로계약서 필수 조항 명시**와 **4대 보험 가입 관리**가 노무 리스크 관리의 핵심입니다. 
+                            귀하의 요청 맥락에 어울리는 최신 인사노무 교육 동영상 2건 및 실무 보고서 1건을 선별했으며, 특히 2026년 개정 고용노동 지침이 반영되어 실무 즉시 적용이 가능합니다."
+                        </div>
+
+                        <!-- 출처 자료 칩(Chip) 링크 연동 -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-slate-500 block"><i class="bi bi-link-45deg"></i> 참고 출처 자료 (바로가기):</span>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 hover:border-keliBlue-500 rounded-lg text-xs font-semibold text-slate-600 hover:text-keliBlue-500 transition-colors shadow-sm">
+                                    <i class="bi bi-file-earmark-pdf text-red-500"></i> [보고서] 2026 스타트업 노무 가이드북.pdf
+                                </a>
+                                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 hover:border-keliBlue-500 rounded-lg text-xs font-semibold text-slate-600 hover:text-keliBlue-500 transition-colors shadow-sm">
+                                    <i class="bi bi-play-btn-fill text-keliBlue-500"></i> [영상] 스타트업 사업주 노무관리 5분 핵심요약
+                                </a>
+                                <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 hover:border-keliBlue-500 rounded-lg text-xs font-semibold text-slate-600 hover:text-keliBlue-500 transition-colors shadow-sm">
+                                    <i class="bi bi-play-btn-fill text-keliBlue-500"></i> [영상] 초보 대표를 위한 근로계약서 양식 작성법
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 영역 3: 하단 스마트 필터링 및 리스트 (Contextual Library) -->
+            <div class="space-y-6">
+                
+                <!-- 필터링 탭 영역 (유저 요청: 전체 | 교육영상 | 보고서 | 기타) -->
+                <div class="flex items-center justify-between border-b border-slate-200 pb-1">
+                    <div class="flex gap-6 text-[15px] font-bold text-slate-400">
+                        <button onclick="switchLibraryTab('all')" class="tab-button text-keliBlue-500 border-b-2 border-keliBlue-500 pb-2.5 px-2">전체</button>
+                        <button onclick="switchLibraryTab('video')" class="tab-button hover:text-slate-600 pb-2.5 px-2">교육영상 (75)</button>
+                        <button onclick="switchLibraryTab('report')" class="tab-button hover:text-slate-600 pb-2.5 px-2">연구보고서 (72)</button>
+                        <button onclick="switchLibraryTab('other')" class="tab-button hover:text-slate-600 pb-2.5 px-2">기타 자료 (441)</button>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-400">
+                        <span>검색 결과 총 <strong class="text-keliBlue-500 font-bold">588</strong>건</span>
+                    </div>
+                </div>
+
+                <!-- 3열 카드 리스트 영역 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- 카드 1: 동영상 자료 -->
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between card-hover cursor-pointer transition-all">
+                        <div>
+                            <!-- 썸네일 영역 -->
+                            <div class="bg-slate-800 aspect-video relative flex items-center justify-center">
+                                <img src="banner_ai.png" alt="썸네일 1" class="w-full h-full object-cover opacity-80">
+                                <span class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 text-white text-[10px] font-bold rounded">05:22</span>
+                                <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                    <i class="bi bi-play-circle-fill text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <!-- 본문 텍스트 -->
+                            <div class="p-5 space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <span class="inline-block px-2.5 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full">교육동영상</span>
+                                    <!-- AI 추천 이유 뱃지 -->
+                                    <span class="px-2 py-0.5 bg-keliBlue-50 text-keliBlue-500 text-[10px] font-bold rounded-md flex items-center gap-0.5">
+                                        <i class="bi bi-sparkles"></i> AI 추천: 최신
+                                    </span>
+                                </div>
+                                <h4 class="text-[14px] font-bold text-slate-800 leading-snug group-hover:text-keliBlue-500">스타트업 사업주 노무관리 5분 핵심요약</h4>
+                                <p class="text-[12px] text-slate-500 line-clamp-2 leading-relaxed">초기 창업자가 꼭 지켜야 하는 소규모 사업장용 필수 5가지 노동법 및 4대보험 가입 필수 지침을 담은 요약 교육 영상입니다.</p>
+                            </div>
+                        </div>
+                        <!-- 피드백/메타 정보 -->
+                        <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                            <span><i class="bi bi-eye"></i> 조회수 1,248</span>
+                            <span>등록일 2026.04.12</span>
+                        </div>
+                    </div>
+
+                    <!-- 카드 2: 동영상 자료 -->
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between card-hover cursor-pointer transition-all">
+                        <div>
+                            <div class="bg-slate-800 aspect-video relative flex items-center justify-center">
+                                <img src="banner_ai.png" alt="썸네일 2" class="w-full h-full object-cover opacity-80">
+                                <span class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/60 text-white text-[10px] font-bold rounded">12:40</span>
+                                <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                    <i class="bi bi-play-circle-fill text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-5 space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <span class="inline-block px-2.5 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded-full">교육동영상</span>
+                                    <span class="px-2 py-0.5 bg-orange-50 text-orange-600 text-[10px] font-bold rounded-md flex items-center gap-0.5">
+                                        <i class="bi bi-hand-thumbs-up"></i> AI 추천: 인기
+                                    </span>
+                                </div>
+                                <h4 class="text-[14px] font-bold text-slate-800 leading-snug">초보 대표를 위한 표준근로계약서 양식 작성법</h4>
+                                <p class="text-[12px] text-slate-500 line-clamp-2 leading-relaxed">계약 기간, 소정 근로시간, 임금 항목 등 고용노동부 표준 양식 작성을 1대1 코칭 형식으로 짚어주는 실무 해설 강의입니다.</p>
+                            </div>
+                        </div>
+                        <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                            <span><i class="bi bi-eye"></i> 조회수 3,892</span>
+                            <span>등록일 2026.03.22</span>
+                        </div>
+                    </div>
+
+                    <!-- 카드 3: 연구보고서 자료 -->
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between card-hover cursor-pointer transition-all">
+                        <div>
+                            <div class="bg-slate-100 aspect-video relative flex items-center justify-center border-b border-slate-100">
+                                <div class="text-slate-400 text-5xl"><i class="bi bi-file-earmark-pdf"></i></div>
+                                <div class="absolute top-2 left-2 bg-[#ff4b4b] text-white font-bold text-[9px] px-2 py-0.5 rounded">PDF</div>
+                            </div>
+                            <div class="p-5 space-y-2.5">
+                                <div class="flex items-center justify-between">
+                                    <span class="inline-block px-2.5 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] font-bold rounded-full">연구보고서</span>
+                                    <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] font-bold rounded-md flex items-center gap-0.5">
+                                        <i class="bi bi-building"></i> AI 추천: 관련
+                                    </span>
+                                </div>
+                                <h4 class="text-[14px] font-bold text-slate-800 leading-snug">2026 스타트업 인사노무 가이드북</h4>
+                                <p class="text-[12px] text-slate-500 line-clamp-2 leading-relaxed">스타트업 및 벤처 기업을 위한 맞춤형 노동 관계 법령 해설집이자 사업장 자체 점검용 노무관리 체크리스트 수록집입니다.</p>
+                            </div>
+                        </div>
+                        <div class="px-5 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                            <span><i class="bi bi-download"></i> 다운로드 854</span>
+                            <span>등록일 2026.05.01</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 더보기 페이징 버튼 -->
+                <div class="flex justify-center pt-4">
+                    <button class="px-6 py-2.5 border border-slate-200 hover:border-keliBlue-500 hover:text-keliBlue-500 rounded-lg text-xs font-semibold text-slate-500 bg-white transition-colors flex items-center gap-1.5 shadow-sm">
+                        <span>자료 더 보기</span>
+                        <i class="bi bi-chevron-down text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 4. Footer: 하단 정보 영역 (index_v1.html 준수) -->
+    <footer class="bg-[#212529] text-white py-12">
+        <div class="container-custom">
+            <!-- Footer Links -->
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] mb-10">
+                <a href="#" class="text-[#ffb400] font-bold">개인정보 처리방침</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">영상정보처리기기 운영·관리방침</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">이용약관</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">관련사이트 한 눈에 보기</a>
+            </div>
+            
+            <!-- Footer Content -->
+            <div class="flex flex-col gap-6">
+                <div class="opacity-30 hover:opacity-50 transition-opacity">
+                    <img src="img_signature_pc_2.png" alt="KELI Footer Logo" class="h-10">
+                </div>
+                
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+                    <div class="text-[13px] text-white/50 leading-relaxed font-light">
+                        <p class="mb-1">Address : 12774) 경기도 광주시 봉골길 229 (문형동) 사업자등록번호 720-82-00342 | TEL 031-760-7700</p>
+                        <p>COPYRIGHT 2022 Korea Employment and Labor Educational Institute. All Rights Reserved.</p>
+                    </div>
+                    
+                    <div class="relative shrink-0">
+                        <select class="bg-transparent border border-white/10 rounded px-5 py-2.5 text-[12px] text-white/40 outline-none hover:border-white/20 transition-all appearance-none pr-12 min-w-[220px]">
+                            <option>관련사이트 바로가기</option>
+                        </select>
+                        <i class="bi bi-chevron-up absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-white/20"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 인터랙션 컨트롤용 JavaScript -->
+    <script>
+        // GNB 메가 메뉴 토글 스크립트 (기존 index_v1.html 기능 유지)
+        const gnbToggle = document.getElementById('gnb-menu-toggle');
+        const gnbMegaMenu = document.getElementById('gnb-mega-menu');
+
+        gnbToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            gnbMegaMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!gnbMegaMenu.contains(e.target) && e.target !== gnbToggle) {
+                gnbMegaMenu.classList.add('hidden');
+            }
+        });
+
+        // 추천 키워드 클릭 시 동작
+        function applyPrompt(text) {
+            document.getElementById('agenticSearchInput').value = text;
+            triggerAISearch();
+        }
+
+        // AI 검색 실행 시 시뮬레이션
+        function triggerAISearch() {
+            const query = document.getElementById('agenticSearchInput').value.trim();
+            const aiInsightBox = document.getElementById('aiInsightBox');
+            
+            // 시각적 피드백 제공 (로딩 모드 전환)
+            aiInsightBox.style.opacity = 0.5;
+            
+            setTimeout(() => {
+                aiInsightBox.style.opacity = 1;
+                // 질문 키워드에 따른 동적 결과 시뮬레이션
+                if (query.includes('인기') || query.includes('브리프')) {
+                    aiInsightBox.innerHTML = `
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-keliBlue-500 text-white flex items-center justify-center flex-shrink-0 text-base font-bold shadow-md shadow-keliBlue-500/20">
+                                <i class="bi bi-robot"></i>
+                            </div>
+                            <div class="flex-1 space-y-4">
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <div>
+                                        <h3 class="font-bold text-slate-900 text-base">KELI AI 핵심 요약 브리프</h3>
+                                        <p class="text-[11px] text-slate-400 font-medium">노동법 브리프 DB에서 가장 높은 평가를 받은 요약 자료를 추천합니다.</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-full text-[11px] font-bold flex items-center gap-1 shadow-sm">
+                                        <i class="bi bi-check-circle-fill"></i> 실시간 분석 완료
+                                    </span>
+                                </div>
+                                <div class="text-[14px] text-slate-700 leading-relaxed font-medium bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-white shadow-inner">
+                                    "최근 배포된 **노동법 브리프 시리즈** 중 사업주들이 가장 많이 조회한 '근로시간 위반 판단 가이드라인'과 '연차휴가 관리 체크리스트'를 정리했습니다. 2026년 법원 판결 동향이 추가 반영된 고신뢰도 자료입니다."
+                                </div>
+                                <div class="space-y-2">
+                                    <span class="text-xs font-bold text-slate-500 block"><i class="bi bi-link-45deg"></i> 참고 출처 자료 (바로가기):</span>
+                                    <div class="flex flex-wrap gap-2">
+                                        <a href="#" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 hover:border-keliBlue-500 rounded-lg text-xs font-semibold text-slate-600 hover:text-keliBlue-500 transition-colors shadow-sm">
+                                            <i class="bi bi-file-earmark-text text-amber-500"></i> [브리프] 근로시간 및 임금체계 개편 실무 요약본.pdf
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 800);
+        }
+
+        // 라이브러리 필터 탭 교체 시각화
+        function switchLibraryTab(type) {
+            const tabs = document.querySelectorAll('.tab-button');
+            tabs.forEach(tab => {
+                tab.classList.remove('text-keliBlue-500', 'border-b-2', 'border-keliBlue-500');
+                tab.classList.add('hover:text-slate-600');
+            });
+            
+            // 클릭된 탭 스타일링 활성화
+            event.currentTarget.classList.add('text-keliBlue-500', 'border-b-2', 'border-keliBlue-500');
+            event.currentTarget.classList.remove('hover:text-slate-600');
+        }
+    </script>
+</body>
+</html>

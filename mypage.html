@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, address=no, email=no, date=no, url=no" />
+    <meta name="keywords" content="한국고용노동교육원">
+    <meta name="description" content="희망을 담은 고용, 미래를 여는 노동.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="한국고용노동교육원">
+    <meta property="og:description" content="희망을 담은 고용, 미래를 여는 노동">
+    <meta property="og:url" content="https://www.keli.kr/">
+    
+    <title>대시보드 | 마이페이지 | 한국고용노동교육원</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .container-custom {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .bg-keli-blue {
+            background-color: #0052cc;
+        }
+        .text-keli-blue {
+            color: #0052cc;
+        }
+        .top-tab {
+            padding: 0 20px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .top-tab.active {
+            background-color: #ffffff;
+            color: #003478;
+            font-weight: 700;
+        }
+        .social-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 40px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .sidebar-link.active {
+            background-color: #1e293b;
+            color: #ffffff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-[#001d43] text-white overflow-hidden">
+        <div class="container-custom flex justify-between items-center !p-0">
+            <div class="flex items-center">
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">교육플랫폼</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">정보플랫폼</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">기관소개</a>
+                <a href="#" class="top-tab active">마이페이지</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4 text-[12px]">
+                    <span class="text-white/80"><strong>홍길동</strong>님 로그인중</span>
+                    <a href="#" class="flex items-center gap-1.5 hover:text-blue-300"><i class="bi bi-box-arrow-right"></i> 로그아웃</a>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+                        <i class="bi bi-globe"></i> KO <i class="bi bi-chevron-down text-[8px]"></i>
+                    </div>
+                </div>
+                <div class="social-box">
+                    <a href="https://www.instagram.com/keli1005_/" target="_blank" class="hover:opacity-70"><i class="bi bi-instagram"></i></a>
+                    <a href="https://blog.naver.com/keli1005" target="_blank" class="hover:opacity-70"><i class="bi bi-chat-square-text"></i></a>
+                    <a href="https://pf.kakao.com/_xduqKK" target="_blank" class="hover:opacity-70"><i class="bi bi-chat-fill"></i></a>
+                    <a href="https://youtube.com/channel/UCvK7TabK73pdV8ZJFnCAsSA?si=wnr0osAcgcJeU5TV" target="_blank" class="hover:opacity-70"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header" class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-sm relative">
+        <div class="container-custom py-4 flex justify-between items-center">
+            <div class="flex items-center gap-12 flex-1">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-4">
+                    <img src="img_signature_pc.png" alt="KELI Logo" class="h-11">
+                    <div class="w-[1px] h-5 bg-slate-200 mx-1"></div>
+                    <span class="text-[15px] font-bold text-[#333] tracking-tight">마이페이지</span>
+                </div>
+                
+                <!-- Main Navigation -->
+                <nav id="gnb-nav" class="hidden lg:flex gap-10 text-[16px] font-bold text-[#333] ml-auto mr-12 h-11 items-center">
+                    <a href="#" data-menu="study" class="gnb-menu-item hover:text-keli-blue transition-colors py-2 text-keli-blue">수강현황</a>
+                    <a href="#" data-menu="usage" class="gnb-menu-item hover:text-keli-blue transition-colors py-2">나의 이용현황</a>
+                    <a href="#" data-menu="profile" class="gnb-menu-item hover:text-keli-blue transition-colors py-2">개인정보</a>
+                    <a href="#" data-menu="instructor" class="gnb-menu-item hover:text-keli-blue transition-colors py-2">강사</a>
+                    <a href="#" data-menu="tutor" class="gnb-menu-item hover:text-keli-blue transition-colors py-2">튜터</a>
+                </nav>
+            </div>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center gap-6">
+                <button class="text-2xl text-slate-800 hover:text-keli-blue"><i class="bi bi-search"></i></button>
+                <div id="gnb-menu-toggle" class="flex flex-col gap-1.5 cursor-pointer group">
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keli-blue transition-all"></span>
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keli-blue transition-all"></span>
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keli-blue transition-all"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GNB Mega Dropdown Menu (펼침화면) -->
+        <div id="gnb-mega-menu" class="hidden absolute left-0 top-full w-full bg-white border-t border-slate-200 border-b border-slate-200 shadow-xl z-50 transition-all duration-300">
+            <div class="container-custom py-10 grid grid-cols-5 gap-8">
+                <!-- Column 1: 수강현황 -->
+                <div id="menu-col-study" class="mega-menu-col border-r border-slate-100 pr-8">
+                    <div class="menu-header bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center transition-colors duration-200">
+                        <h3 class="font-bold text-slate-800 text-[16px]">수강현황</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 수강현황</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: 나의 이용현황 -->
+                <div id="menu-col-usage" class="mega-menu-col border-r border-slate-100 pr-8">
+                    <div class="menu-header bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center transition-colors duration-200">
+                        <h3 class="font-bold text-slate-800 text-[16px]">나의 이용현황</h3>
+                    </div>
+                    <ul class="space-y-3.5 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 고객의 소리</a></li>
+                        <li><a href="#" onclick="switchTab('contest'); return false;" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 공모전 참여현황/관리</a></li>
+                        <li><a href="#" onclick="switchTab('judging'); return false;" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 공모전 심사</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 스크랩</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 교육/학습후기</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 나의 커뮤니티</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 학습자료실</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 현장지원 교육 신청내역/관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 강의전문위원 신청/관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 자료사용 신청현황/관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 나에게 공개된 자료</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 신청현황</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 자료 등록/관리 현황</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 자료 신청현황/관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 담당자 관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API 신청 현황/관리</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: 개인정보 -->
+                <div id="menu-col-profile" class="mega-menu-col border-r border-slate-100 pr-8">
+                    <div class="menu-header bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center transition-colors duration-200">
+                        <h3 class="font-bold text-slate-800 text-[16px]">개인정보</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 회원정보 수정</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 회원정보통합</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: 강사 -->
+                <div id="menu-col-instructor" class="mega-menu-col border-r border-slate-100 pr-8">
+                    <div class="menu-header bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center transition-colors duration-200">
+                        <h3 class="font-bold text-slate-800 text-[16px]">강사</h3>
+                    </div>
+                    <ul class="space-y-3.5 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 강사 정보 관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 학력/경력정보 관리</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 강사 승인/인증 이력 조회</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 교육원 교육이력</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 출강일정</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 출강이력</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 현장지원교육 신청 및 선정</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: 튜터 -->
+                <div id="menu-col-tutor" class="mega-menu-col">
+                    <div class="menu-header bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center transition-colors duration-200">
+                        <h3 class="font-bold text-slate-800 text-[16px]">튜터</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 튜터 운영과정</a></li>
+                        <li><a href="#" class="hover:text-slate-800 hover:font-bold hover:underline flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 튜터 Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container-custom py-10 flex gap-8">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 shrink-0 bg-white rounded-xl border border-slate-200 shadow-sm self-start overflow-hidden">
+            <!-- Sidebar Header for Dashboard -->
+            <div id="lnb-header-dashboard" class="bg-gradient-to-br from-[#009b9e] to-[#0170a4] text-white p-6 relative overflow-hidden">
+                <h2 class="text-2xl font-bold relative z-10 tracking-wide">마이페이지</h2>
+                <div class="absolute -right-2 -bottom-2 text-white/10 text-6xl font-black select-none z-0">KELI</div>
+            </div>
+            <!-- Sidebar Header for Usage (나의 이용현황) -->
+            <div id="lnb-header-usage" class="hidden bg-gradient-to-br from-[#009b9e] to-[#0170a4] text-white p-6 relative overflow-hidden">
+                <h2 class="text-2xl font-bold relative z-10 tracking-wide">나의 이용현황</h2>
+                <div class="absolute -right-2 -bottom-2 text-white/10 text-6xl font-black select-none z-0">KELI</div>
+            </div>
+
+            <!-- Dashboard LNB List -->
+            <div id="lnb-list-dashboard" class="divide-y divide-slate-100">
+                <a href="#" onclick="switchTab('dashboard')" class="sidebar-link active block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+                    <i class="bi bi-speedometer2 mr-2"></i> 대시보드
+                </a>
+            </div>
+
+            <!-- Usage LNB List -->
+            <div id="lnb-list-usage" class="hidden divide-y divide-slate-100">
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">고객의 소리</a>
+                <a href="#" id="lnb-item-contest" onclick="switchTab('contest')" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">공모전 참여현황/관리</a>
+                <a href="#" id="lnb-item-judging" onclick="switchTab('judging')" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">공모전 심사</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">스크랩</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">교육/학습후기</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">나의 커뮤니티</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">학습자료실</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">현장지원 교육 신청내역/관리</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">강의전문위원 신청/관리</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">자료사용 신청현황/관리</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">나에게 공개된 자료</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">유관기관 신청현황</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">자료 등록/관리 현황</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">유관기관 자료 신청현황/관리</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">유관기관 담당자 관리</a>
+                <a href="#" class="sidebar-link block px-6 py-4 text-[15px] font-medium text-slate-700 hover:bg-slate-50 transition-colors">Open API 신청 현황/관리</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="flex-1 space-y-8">
+            <!-- 1. DASHBOARD VIEW -->
+            <div id="view-dashboard" class="space-y-6">
+                <!-- Title & Social Actions -->
+                <div class="flex justify-between items-center">
+                    <h2 class="text-[28px] font-bold text-slate-900">대시보드</h2>
+                    <div class="flex items-center gap-1.5">
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm"><i class="bi bi-star-fill"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm"><i class="bi bi-files"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm"><i class="bi bi-printer"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm"><i class="bi bi-image"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm"><i class="bi bi-facebook"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 text-sm"><i class="bi bi-twitter-x"></i></button>
+                    </div>
+                </div>
+
+                <!-- Breadcrumbs -->
+                <div class="flex items-center gap-2 text-[13px] text-slate-400 border-t border-b border-slate-100 py-2.5">
+                    <a href="#" class="hover:text-keli-blue"><i class="bi bi-house-door-fill text-slate-400"></i></a>
+                    <i class="bi bi-chevron-right text-[10px]"></i>
+                    <span>대시보드</span>
+                    <i class="bi bi-chevron-right text-[10px]"></i>
+                    <span class="text-slate-700 font-medium">대시보드</span>
+                </div>
+
+                <!-- Purple Bar Info Box -->
+                <div class="bg-white p-6 pl-8 rounded-lg border border-slate-200 border-l-4 border-l-[#8b5cf6] shadow-sm flex items-center gap-6">
+                    <div class="w-[72px] h-[72px] rounded-full border border-dashed border-slate-300 flex items-center justify-center shrink-0 bg-slate-50">
+                        <div class="w-[56px] h-[56px] rounded-full border border-slate-200 flex items-center justify-center bg-white shadow-sm">
+                            <i class="bi bi-mic text-2xl text-slate-600"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <p class="text-slate-600 text-[14px] leading-relaxed">
+                            마이페이지에서는 회원님의 학습 현황과 개인화된 정보를 빠르게 확인하실 수 있으며, 보다 빠른 접근을 위해 아래 버튼을 이용해 주세요.
+                        </p>
+                        <div class="flex flex-wrap gap-2.5">
+                            <a href="#" class="inline-flex items-center gap-2 bg-[#0052cc] text-white px-4 py-2 rounded text-[13px] font-medium hover:bg-[#0044a0] transition-colors">
+                                수강현황 바로가기 <i class="bi bi-arrow-right"></i>
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-2 border border-slate-300 bg-white text-slate-700 px-4 py-2 rounded text-[13px] font-medium hover:bg-slate-50 transition-colors">
+                                현장지원 교육 신청내역/관리 청소년(학교)/청년(대학) <span class="text-[11px]">&rarr;</span>
+                            </a>
+                            <a href="#" class="inline-flex items-center gap-2 border border-slate-300 bg-white text-slate-700 px-4 py-2 rounded text-[13px] font-medium hover:bg-slate-50 transition-colors">
+                                현장지원 교육 신청내역/관리 기관(단체)/기업 <span class="text-[11px]">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: 나의 활동 관련 알림 -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <h3 class="text-[18px] font-bold text-slate-800 flex items-center">
+                            <span class="inline-block w-[14px] h-[14px] bg-[#0052cc] border-2 border-white shadow-[2px_2px_0_0_#38bdf8] mr-2"></span>
+                            나의 활동 관련 알림
+                        </h3>
+                        <div class="flex items-center gap-1.5 text-slate-300 text-sm font-bold">
+                            <button class="hover:text-slate-600 transition-colors"><i class="bi bi-chevron-left"></i></button>
+                            <span class="text-slate-300">|</span>
+                            <button class="hover:text-slate-600 transition-colors"><i class="bi bi-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <!-- Card 1: 내 정보 -->
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm relative flex flex-col justify-between min-h-[220px]">
+                            <div>
+                                <h4 class="text-[16px] font-bold text-slate-800 mb-4">내 정보</h4>
+                                <p class="text-[15px] font-medium text-slate-900 mb-4">'홍길동'님 안녕하세요.</p>
+                                <ul class="space-y-2 text-[13px] text-slate-600">
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">회원유형 :</span> <span>고용노동부/강사/튜터</span></li>
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">소속 :</span> <span>대구서부지청</span></li>
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">최근 접속일 :</span> <span>2026-06-18</span></li>
+                                </ul>
+                            </div>
+                            <div class="flex justify-end mt-4">
+                                <a href="#" class="inline-flex items-center gap-2 bg-[#3f3f46] text-white px-4 py-2 rounded text-[13px] font-medium hover:bg-zinc-800 transition-colors">
+                                    바로가기 <span class="text-[11px]">&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: 나의 자료 활용 현황 -->
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between min-h-[220px]">
+                            <div>
+                                <h4 class="text-[16px] font-bold text-slate-800 mb-2">나의 자료 활용 현황</h4>
+                                <p class="text-[13px] text-slate-500 mb-4">교육/자료 등을 활용하면서 참여한 주요 활동 내역입니다.</p>
+                                <ul class="space-y-2 text-[13px] text-slate-600">
+                                    <li class="flex items-center gap-1"><span class="text-slate-300 select-none">■</span> <span class="font-bold text-slate-700">스크랩 :</span> <span class="font-bold text-slate-900 ml-1">건</span></li>
+                                    <li class="flex items-center gap-1"><span class="text-slate-300 select-none">■</span> <span class="font-bold text-slate-700">교육/학습 후기 작성 :</span> <span class="font-bold text-slate-900 ml-1">건</span></li>
+                                    <li class="flex items-center gap-1"><span class="text-slate-300 select-none">■</span> <span class="font-bold text-slate-700">자료 댓글 작성 :</span> <span class="font-bold text-slate-900 ml-1">건</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: 나의 상담 및 AI 상담 현황 -->
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between min-h-[220px]">
+                            <div>
+                                <h4 class="text-[16px] font-bold text-slate-800 mb-2">나의 질의 & AI 상담 현황</h4>
+                                <p class="text-[13px] text-slate-500 mb-4">교육원 헬프데스크 및 AI를 통해 진행 중인 상담입니다.</p>
+                                <ul class="space-y-2 text-[13px] text-slate-600">
+                                    <li class="flex items-center gap-1"><span class="text-slate-300 select-none">■</span> <span class="font-bold text-slate-700">AI 챗 질문 내역 :</span> <span class="font-bold text-slate-900 ml-1">4 건</span></li>
+                                    <li class="flex items-center gap-1"><span class="text-slate-300 select-none">■</span> <span class="font-bold text-slate-700">1:1 문의 접수 :</span> <span class="font-bold text-slate-900 ml-1">1 건</span></li>
+                                    <li class="flex items-center gap-1"><span class="text-slate-300 select-none">■</span> <span class="font-bold text-slate-700">미답변 문의 건수 :</span> <span class="font-bold text-slate-900 ml-1">0 건</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: 나의 강의 알림 -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <h3 class="text-[18px] font-bold text-slate-800 flex items-center">
+                            <span class="inline-block w-[14px] h-[14px] bg-[#0052cc] border-2 border-white shadow-[2px_2px_0_0_#38bdf8] mr-2"></span>
+                            나의 강의 알림
+                        </h3>
+                        <div class="flex items-center gap-1.5 text-slate-300 text-sm font-bold">
+                            <button class="hover:text-slate-600 transition-colors"><i class="bi bi-chevron-left"></i></button>
+                            <span class="text-slate-300">|</span>
+                            <button class="hover:text-slate-600 transition-colors"><i class="bi bi-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 font-medium">
+                        <!-- Card 1: 제3기 미래산업 및 직업전문과정 -->
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between min-h-[300px]">
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 bg-[#e2fbf5] text-[#009081] text-[11px] font-bold rounded-full">집합</span>
+                                </div>
+                                <h4 class="text-[16px] font-bold text-slate-800 leading-snug">제3기 미래산업 및 직업전문과정</h4>
+                                <ul class="space-y-1.5 text-[13px] text-slate-600">
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">기간 :</span> <span>2025.10.13 ~ 2026.10.31</span></li>
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">최근접속 :</span> <span>2026.06.18</span></li>
+                                </ul>
+                                
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 grid grid-cols-2 gap-x-4 gap-y-2 text-[12px] text-slate-600">
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-search text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">진단평가</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-pencil-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">학습평가</span>
+                                        <span class="ml-auto text-slate-900 font-bold">0<span class="text-[#ef4444]">/1</span></span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-hand-thumbs-up-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">교육만족도</span>
+                                        <span class="ml-auto text-slate-900 font-bold">0<span class="text-[#ef4444]">/2</span></span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-person-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">현업적용도</span>
+                                        <span class="ml-auto text-slate-900 font-bold">1<span class="text-[#ef4444]">/2</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="#" class="block w-full text-center bg-[#94a3b8] text-white py-2.5 rounded text-[13px] font-bold hover:bg-slate-500 transition-colors">
+                                    강의실 바로가기(0.00%)
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: 근로감독부서 팀장 수사 및 리더십 강화과정 -->
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between min-h-[300px]">
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 bg-[#e2fbf5] text-[#009081] text-[11px] font-bold rounded-full">집합</span>
+                                </div>
+                                <h4 class="text-[16px] font-bold text-slate-800 leading-snug">근로감독부서 팀장 수사 및 리더십 강화과정</h4>
+                                <ul class="space-y-1.5 text-[13px] text-slate-600">
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">기간 :</span> <span>2025.08.25 ~ 2026.08.31</span></li>
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">최근접속 :</span> <span></span></li>
+                                </ul>
+                                
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 grid grid-cols-2 gap-x-4 gap-y-2 text-[12px] text-slate-600">
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-search text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">진단평가</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-pencil-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">학습평가</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-hand-thumbs-up-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">교육만족도</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-person-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">현업적용도</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="#" class="block w-full text-center bg-[#94a3b8] text-white py-2.5 rounded text-[13px] font-bold hover:bg-slate-500 transition-colors">
+                                    강의실 바로가기(0.00%)
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: 제5기 청소년 노동인권 교육지도사 과정 -->
+                        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between min-h-[300px]">
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 bg-[#e2fbf5] text-[#009081] text-[11px] font-bold rounded-full">집합</span>
+                                </div>
+                                <h4 class="text-[16px] font-bold text-slate-800 leading-snug">제5기 청소년 노동인권 교육지도사 과정</h4>
+                                <ul class="space-y-1.5 text-[13px] text-slate-600">
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">기간 :</span> <span>2025.11.01 ~ 2026.11.15</span></li>
+                                    <li class="flex items-start gap-1"><span class="text-slate-300 select-none">■</span> <span class="w-[70px] shrink-0 font-bold text-slate-700">최근접속 :</span> <span>2026.06.20</span></li>
+                                </ul>
+                                
+                                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 grid grid-cols-2 gap-x-4 gap-y-2 text-[12px] text-slate-600">
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-search text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">진단평가</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-pencil-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">학습평가</span>
+                                        <span class="ml-auto text-slate-900 font-bold">1<span class="text-[#ef4444]">/1</span></span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-hand-thumbs-up-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">교육만족도</span>
+                                        <span class="ml-auto text-keli-blue font-bold">완료</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <i class="bi bi-person-fill text-slate-500"></i>
+                                        <span class="font-bold text-slate-700">현업적용도</span>
+                                        <span class="text-slate-500 ml-auto">없음</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <a href="#" class="block w-full text-center bg-keli-blue text-white py-2.5 rounded text-[13px] font-bold hover:bg-opacity-90 transition-colors">
+                                    강의실 바로가기(100.00%)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. CONTEST INQUIRY VIEW (공모전 참여현황/관리) -->
+            <div id="view-contest" class="space-y-8 hidden">
+                <!-- Breadcrumbs & Title -->
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">공모전 참여현황/관리</h2>
+                    </div>
+                    <!-- Right Actions -->
+                    <div class="flex items-center gap-3">
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-star"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-files"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-printer"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-image"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-facebook"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-twitter-x"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <nav class="flex text-sm text-slate-400 gap-2 items-center">
+                        <a href="#" class="hover:text-keli-blue"><i class="bi bi-house-door"></i></a>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <span>나의 이용현황</span>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <span class="text-slate-800 font-medium">공모전 참여현황/관리</span>
+                    </nav>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="bg-slate-100 p-6 rounded-lg flex items-center gap-3">
+                    <div class="relative w-44">
+                        <select class="w-full bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-700 appearance-none focus:outline-none focus:border-keli-blue">
+                            <option>연도 구분</option>
+                        </select>
+                        <i class="bi bi-chevron-down absolute right-3 top-3 text-[10px] text-slate-400 pointer-events-none"></i>
+                    </div>
+                    <div class="relative w-44">
+                        <select class="w-full bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-700 appearance-none focus:outline-none focus:border-keli-blue">
+                            <option>전체</option>
+                        </select>
+                        <i class="bi bi-chevron-down absolute right-3 top-3 text-[10px] text-slate-400 pointer-events-none"></i>
+                    </div>
+                    <input type="text" placeholder="검색어를 입력하세요" class="flex-1 bg-white border border-slate-300 rounded px-4 py-2 text-sm text-slate-700 focus:outline-none focus:border-keli-blue">
+                    <button class="bg-[#334155] text-white px-6 py-2 rounded text-sm font-medium hover:bg-[#1e293b] transition-colors">검색</button>
+                </div>
+
+                <!-- Contest List Card -->
+                <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="border border-[#0052cc] text-[#0052cc] text-xs font-bold px-3 py-1 rounded-full">진행중</span>
+                        <h3 class="text-lg font-bold text-slate-800 cursor-pointer hover:text-keli-blue hover:underline transition-colors" onclick="switchTab('detail')">[2026] 공모전 테스트</h3>
+                    </div>
+                    <div class="text-[13px] text-slate-500 space-y-3">
+                        <div class="flex flex-wrap gap-x-6 gap-y-2 border-b border-dashed border-slate-200 pb-3">
+                            <div><span class="text-slate-400">■</span> 참여기간 : <span class="text-slate-700 font-medium">2026-06-12 00:00 ~ 2026-07-31 00:00</span></div>
+                            <div><span class="text-slate-400">■</span> 작성자 : <span class="text-slate-700 font-medium">인시퀀스</span></div>
+                            <div><span class="text-slate-400">■</span> 등록일 : <span class="text-slate-700 font-medium">2026. 06. 12</span></div>
+                            <div><span class="text-slate-400">■</span> 조회수 : <span class="text-slate-700 font-medium">8</span></div>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
+                            <div><span class="text-slate-400">■</span> 참여일시 : <span class="text-slate-700 font-medium">2026.06.12 14:44</span></div>
+                            <div class="flex items-center gap-3 ml-2">
+                                <button onclick="switchTab('detail')" class="bg-[#1e293b] text-white text-xs font-medium px-4 py-2 rounded hover:bg-slate-800 transition-colors">참여내역 보기</button>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-slate-400">■</span> 참여내역 관리 : 
+                                    <button class="bg-[#00875a] text-white text-xs font-medium px-4 py-2 rounded hover:bg-[#006644] transition-colors">참여내역 수정</button>
+                                    <button class="border border-slate-300 bg-white text-slate-600 text-xs font-medium px-4 py-2 rounded hover:bg-slate-50 transition-colors">참여 취소(삭제)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center items-center gap-2 pt-4">
+                    <button class="w-8 h-8 rounded-full bg-[#e6f4ff] text-[#0052cc] font-bold text-sm flex items-center justify-center">1</button>
+                </div>
+            </div>
+
+            <!-- 3. CONTEST JUDGING VIEW (공모전 심사) -->
+            <div id="view-judging" class="space-y-8 hidden">
+                <!-- Breadcrumbs & Title -->
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">공모전 심사</h2>
+                    </div>
+                    <!-- Right Actions -->
+                    <div class="flex items-center gap-3">
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-star"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-files"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-printer"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-image"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-facebook"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-twitter-x"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <nav class="flex text-sm text-slate-400 gap-2 items-center">
+                        <a href="#" class="hover:text-keli-blue"><i class="bi bi-house-door"></i></a>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <span>나의 이용현황</span>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <span class="text-slate-800 font-medium">공모전 심사</span>
+                    </nav>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="bg-slate-100 p-6 rounded-lg flex items-center gap-3">
+                    <div class="relative w-44">
+                        <select class="w-full bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-700 appearance-none focus:outline-none focus:border-keli-blue">
+                            <option>연도 구분</option>
+                        </select>
+                        <i class="bi bi-chevron-down absolute right-3 top-3 text-[10px] text-slate-400 pointer-events-none"></i>
+                    </div>
+                    <div class="relative w-44">
+                        <select class="w-full bg-white border border-slate-300 rounded px-3 py-2 text-sm text-slate-700 appearance-none focus:outline-none focus:border-keli-blue">
+                            <option>전체</option>
+                        </select>
+                        <i class="bi bi-chevron-down absolute right-3 top-3 text-[10px] text-slate-400 pointer-events-none"></i>
+                    </div>
+                    <input type="text" placeholder="검색어를 입력하세요" class="flex-1 bg-white border border-slate-300 rounded px-4 py-2 text-sm text-slate-700 focus:outline-none focus:border-keli-blue">
+                    <button class="bg-[#334155] text-white px-6 py-2 rounded text-sm font-medium hover:bg-[#1e293b] transition-colors">검색</button>
+                </div>
+
+                <!-- Contest Submission Blocks for Evaluation -->
+                <div class="space-y-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="border border-emerald-600 text-emerald-600 text-xs font-bold px-3 py-1 rounded-full">심사완료</span>
+                            <h3 class="text-lg font-bold text-slate-800 cursor-pointer hover:text-keli-blue hover:underline transition-colors" onclick="switchTab('detail')">[250311114] 정년퇴직으로 멈춘 내 인생, 국취로 다시 빠운스(Bounce)!</h3>
+                        </div>
+                        <div class="text-[13px] text-slate-500 space-y-3">
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 border-b border-dashed border-slate-200 pb-3">
+                                <div><span class="text-slate-400">■</span> 성명 : <span class="text-slate-700 font-medium">김**</span></div>
+                                <div><span class="text-slate-400">■</span> 참가구분 : <span class="text-slate-700 font-medium">개인</span></div>
+                                <div><span class="text-slate-400">■</span> 공모분야 : <span class="text-slate-700 font-medium">국민취업지원제도 우수사례</span></div>
+                                <div><span class="text-slate-400">■</span> 소속 : <span class="text-slate-700 font-medium">(주)경북고용성장지원센터</span></div>
+                                <div><span class="text-slate-400">■</span> 신청일 : <span class="text-slate-700 font-medium">2025. 09. 12</span></div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
+                                <div><span class="text-slate-400">■</span> 심사점수 : <span class="text-slate-900 font-bold text-base">92점</span></div>
+                                <div><span class="text-slate-400">■</span> 심사일시 : <span class="text-slate-700 font-medium">2026.06.12 14:44</span></div>
+                                <div class="flex items-center gap-3 ml-2">
+                                    <button onclick="switchTab('detail')" class="bg-[#1e293b] text-white text-xs font-medium px-4 py-2 rounded hover:bg-slate-800 transition-colors">심사내역 보기</button>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-400">■</span> 심사 관리 : 
+                                        <button class="bg-[#00875a] text-white text-xs font-medium px-4 py-2 rounded hover:bg-[#006644] transition-colors">심사수정</button>
+                                        <button class="border border-slate-300 bg-white text-slate-600 text-xs font-medium px-4 py-2 rounded hover:bg-slate-50 transition-colors">심사취소(삭제)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="border border-amber-600 text-amber-600 text-xs font-bold px-3 py-1 rounded-full">심사대기</span>
+                            <h3 class="text-lg font-bold text-slate-800 cursor-pointer hover:text-keli-blue hover:underline transition-colors" onclick="switchTab('detail')">[250311113] “ 아이 때문에 어른이 되어야 했던 청년의 취업 성공기 ”</h3>
+                        </div>
+                        <div class="text-[13px] text-slate-500 space-y-3">
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 border-b border-dashed border-slate-200 pb-3">
+                                <div><span class="text-slate-400">■</span> 성명 : <span class="text-slate-700 font-medium">임**</span></div>
+                                <div><span class="text-slate-400">■</span> 참가구분 : <span class="text-slate-700 font-medium">개인</span></div>
+                                <div><span class="text-slate-400">■</span> 공모분야 : <span class="text-slate-700 font-medium">국민취업지원제도 우수사례</span></div>
+                                <div><span class="text-slate-400">■</span> 소속 : <span class="text-slate-700 font-medium">경북고용성장지원센터</span></div>
+                                <div><span class="text-slate-400">■</span> 신청일 : <span class="text-slate-700 font-medium">2025. 09. 12</span></div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
+                                <div><span class="text-slate-400">■</span> 심사점수 : <span class="text-slate-400 font-medium">미평가</span></div>
+                                <div class="flex items-center gap-3 ml-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-400">■</span> 심사 평가 : 
+                                        <button onclick="switchTab('detail')" class="bg-[#0052cc] text-white text-xs font-medium px-5 py-2 rounded hover:bg-[#0044a0] transition-colors flex items-center gap-1.5"><i class="bi bi-pencil-square"></i> 평가하기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="border border-emerald-600 text-emerald-600 text-xs font-bold px-3 py-1 rounded-full">심사완료</span>
+                            <h3 class="text-lg font-bold text-slate-800 cursor-pointer hover:text-keli-blue hover:underline transition-colors" onclick="switchTab('detail')">[250311112] 무엇이든 해낼수 있는 나를 잡(JOB)아라!</h3>
+                        </div>
+                        <div class="text-[13px] text-slate-500 space-y-3">
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 border-b border-dashed border-slate-200 pb-3">
+                                <div><span class="text-slate-400">■</span> 성명 : <span class="text-slate-700 font-medium">박**</span></div>
+                                <div><span class="text-slate-400">■</span> 참가구분 : <span class="text-slate-700 font-medium">개인</span></div>
+                                <div><span class="text-slate-400">■</span> 공모분야 : <span class="text-slate-700 font-medium">국민취업지원제도 우수사례</span></div>
+                                <div><span class="text-slate-400">■</span> 소속 : <span class="text-slate-700 font-medium">경북고용성장지원센터</span></div>
+                                <div><span class="text-slate-400">■</span> 신청일 : <span class="text-slate-700 font-medium">2025. 09. 12</span></div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
+                                <div><span class="text-slate-400">■</span> 심사점수 : <span class="text-slate-900 font-bold text-base">88점</span></div>
+                                <div><span class="text-slate-400">■</span> 심사일시 : <span class="text-slate-700 font-medium">2026.06.12 14:44</span></div>
+                                <div class="flex items-center gap-3 ml-2">
+                                    <button onclick="switchTab('detail')" class="bg-[#1e293b] text-white text-xs font-medium px-4 py-2 rounded hover:bg-slate-800 transition-colors">심사내역 보기</button>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-400">■</span> 심사 관리 : 
+                                        <button class="bg-[#00875a] text-white text-xs font-medium px-4 py-2 rounded hover:bg-[#006644] transition-colors">심사수정</button>
+                                        <button class="border border-slate-300 bg-white text-slate-600 text-xs font-medium px-4 py-2 rounded hover:bg-slate-50 transition-colors">심사취소(삭제)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="border border-emerald-600 text-emerald-600 text-xs font-bold px-3 py-1 rounded-full">심사완료</span>
+                            <h3 class="text-lg font-bold text-slate-800 cursor-pointer hover:text-keli-blue hover:underline transition-colors" onclick="switchTab('detail')">[250311111] "내 안의 분노를 NO, 희망을 찾은 국취 YES"</h3>
+                        </div>
+                        <div class="text-[13px] text-slate-500 space-y-3">
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 border-b border-dashed border-slate-200 pb-3">
+                                <div><span class="text-slate-400">■</span> 성명 : <span class="text-slate-700 font-medium">박**</span></div>
+                                <div><span class="text-slate-400">■</span> 참가구분 : <span class="text-slate-700 font-medium">개인</span></div>
+                                <div><span class="text-slate-400">■</span> 공모분야 : <span class="text-slate-700 font-medium">국민취업지원제도 우수사례</span></div>
+                                <div><span class="text-slate-400">■</span> 소속 : <span class="text-slate-700 font-medium">(주)제이비컴 충청지사</span></div>
+                                <div><span class="text-slate-400">■</span> 신청일 : <span class="text-slate-700 font-medium">2025. 09. 12</span></div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1">
+                                <div><span class="text-slate-400">■</span> 심사점수 : <span class="text-slate-900 font-bold text-base">95점</span></div>
+                                <div><span class="text-slate-400">■</span> 심사일시 : <span class="text-slate-700 font-medium">2026.06.12 14:44</span></div>
+                                <div class="flex items-center gap-3 ml-2">
+                                    <button onclick="switchTab('detail')" class="bg-[#1e293b] text-white text-xs font-medium px-4 py-2 rounded hover:bg-slate-800 transition-colors">심사내역 보기</button>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-slate-400">■</span> 심사 관리 : 
+                                        <button class="bg-[#00875a] text-white text-xs font-medium px-4 py-2 rounded hover:bg-[#006644] transition-colors">심사수정</button>
+                                        <button class="border border-slate-300 bg-white text-slate-600 text-xs font-medium px-4 py-2 rounded hover:bg-slate-50 transition-colors">심사취소(삭제)</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center items-center gap-2 pt-4">
+                    <button class="w-8 h-8 rounded-full bg-[#e6f4ff] text-[#0052cc] font-bold text-sm flex items-center justify-center">1</button>
+                </div>
+            </div>
+
+            <!-- 4. CONTEST DETAIL VIEW (공모전 심사 상세내역) -->
+            <div id="view-detail" class="space-y-8 hidden">
+                <!-- Breadcrumbs & Title -->
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">공모전 심사 상세내역</h2>
+                    </div>
+                    <!-- Right Actions -->
+                    <div class="flex items-center gap-3">
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-star"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-files"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-printer"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-image"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-facebook"></i></button>
+                        <button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"><i class="bi bi-twitter-x"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <nav class="flex text-sm text-slate-400 gap-2 items-center">
+                        <a href="#" class="hover:text-keli-blue"><i class="bi bi-house-door"></i></a>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <span>나의 이용현황</span>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <a href="#" onclick="switchTab('judging'); return false;" class="hover:text-keli-blue">공모전 심사</a>
+                        <i class="bi bi-chevron-right text-[10px]"></i>
+                        <span class="text-slate-800 font-medium">상세보기</span>
+                    </nav>
+                </div>
+
+                <!-- Detail Table -->
+                <div class="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <tbody>
+                            <!-- 접수번호 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">접수번호</th>
+                                <td class="px-6 py-4 text-slate-800 font-medium">25051056</td>
+                            </tr>
+                            <!-- 공모전제목 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">공모전제목</th>
+                                <td class="px-6 py-4 text-slate-800">2025년 고용+성장 사례 공모전 실시(고용센터)</td>
+                            </tr>
+                            <!-- 참가구분 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">참가구분</th>
+                                <td class="px-6 py-4 text-slate-800">개인</td>
+                            </tr>
+                            <!-- 공모분야 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">공모분야</th>
+                                <td class="px-6 py-4 text-slate-800">국민취업지원제도 우수사례</td>
+                            </tr>
+                            <!-- 성명 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">성명</th>
+                                <td class="px-6 py-4 text-slate-800">김**</td>
+                            </tr>
+                            <!-- 소속 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">소속</th>
+                                <td class="px-6 py-4 text-slate-800">서울고용센터</td>
+                            </tr>
+                            <!-- 연락처(핸드폰) -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">연락처(핸드폰)</th>
+                                <td class="px-6 py-4 text-slate-800">010-2277-2261</td>
+                            </tr>
+                            <!-- 연락처(사무실) -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">연락처(사무실)</th>
+                                <td class="px-6 py-4 text-slate-800">02-2004-7861</td>
+                            </tr>
+                            <!-- 이메일 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">이메일</th>
+                                <td class="px-6 py-4 text-slate-800">korea0917@korea.kr</td>
+                            </tr>
+                            <!-- 사례제목 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">사례제목</th>
+                                <td class="px-6 py-4 text-slate-800 font-semibold text-slate-900">AI와 지역협업으로 이어진 도약의 길: 맞춤형 상담을 통한 구직자 재도약 성공사례</td>
+                            </tr>
+                            <!-- 사례요약 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">사례요약</th>
+                                <td class="px-6 py-4 text-slate-700 leading-relaxed text-[13px] md:text-sm">
+                                    32세 여성(청년)은 장기 미취업으로 자신감 저하와 대인관계 회피 등 심리적 어려움을 겪고 있었다. 7회기 심층상담을 통해 정서적 안정과 구직동기를 회복하도록 도왔고, 종로여성새일센터·중구청·노사발전재단 등 지역 유관기관과의 협업으로 ‘온라인 마케터 양성과정’ 및 ‘미래내일일경험’ 프로그램을 연계한 결과 자존감과 직무역량을 회복하여 마케팅 사무원으로 취업(10.15)에 성공하였다. 경력유형별, 중점타겟별, 복합애로구직자 등 대상별 맞춤형 서비스를 제공한 결과, 상담 종료 인원의 51%가 취업에 성공하였다. ① 맞춤형 서비스 제공: 개인별 경력설계 및 취업계획 수립을 기반으로, 실업급여 수급자 대상 ‘살쓸센장’, 구직단념 청년 대상 ‘청년도전 Jump Up!’, 청년층 대상 ‘청년카페 One-Stop 서비스’ 등 대상별 특화 프로그램을 운영하였다. ② 사후관리 강화: 전담자 역량 강화를 위해 ‘잡케어 AI’ 상담사례 공유, ‘역량충전 학습조직’ 운영 등 지속적인 전문성 향상을 추진하였다.
+                                </td>
+                            </tr>
+                            <!-- 첨부파일 -->
+                            <tr class="border-b border-slate-150">
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">첨부파일</th>
+                                <td class="px-6 py-4 text-slate-800 space-y-3">
+                                    <!-- File 1 -->
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <i class="bi bi-file-earmark-pdf text-red-500 text-xl"></i>
+                                            <div>
+                                                <p class="font-medium text-slate-800 text-xs sm:text-sm">공모전 제출_2025년 구조제 기관운영 우수사례(서울고용센터)_김정화.pdf</p>
+                                                <p class="text-xs text-slate-400">2,315.92 KB</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="text-slate-400 hover:text-slate-600 transition-colors p-2"><i class="bi bi-download"></i></a>
+                                    </div>
+                                    <!-- File 2 -->
+                                    <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <i class="bi bi-file-earmark-word text-blue-500 text-xl"></i>
+                                            <div>
+                                                <p class="font-medium text-slate-800 text-xs sm:text-sm">공모전 제출_2025년 구조제 기관운영 우수사례(기관_서울고용센터)_김정화.hwp</p>
+                                                <p class="text-xs text-slate-400">31,489.5 KB</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="text-slate-400 hover:text-slate-600 transition-colors p-2"><i class="bi bi-download"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- 신청일 -->
+                            <tr>
+                                <th class="w-44 bg-slate-50 px-6 py-4 font-bold text-slate-700 border-r border-slate-100">신청일</th>
+                                <td class="px-6 py-4 text-slate-800">2025.10.17</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Actions / Buttons -->
+                <div class="flex justify-center gap-3 pt-4">
+                    <button onclick="switchTab('judging')" class="border border-slate-300 bg-white text-slate-700 px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition-colors">목록</button>
+                    <button onclick="switchTab('judging')" class="bg-[#00875a] text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-[#006644] transition-colors">심사수정</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#212529] text-white py-12 mt-20 border-t border-slate-800">
+        <div class="container-custom">
+            <!-- Footer Links -->
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] mb-8">
+                <a href="#" class="text-[#ffb400] font-bold">개인정보 처리방침</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">영상정보처리기기 운영·관리방침</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">이용약관</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">관련사이트 한 눈에 보기</a>
+            </div>
+            
+            <!-- Footer Content -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-[13px] text-slate-400">
+                <div class="space-y-2">
+                    <p>우) 12752 경기도 광주시 오포읍 태재로 115 한국고용노동교육원 | 대표전화 031-760-7700</p>
+                    <p>© Korea Employment & Labor Education Institute. All Rights Reserved.</p>
+                </div>
+                <div>
+                    <img src="img_signature_pc_2.png" alt="KELI Bottom Logo" class="h-10 opacity-70 bg-white p-1 rounded">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GNB 메가 메뉴 마우스 호버(Hover) 제어 스크립트
+        const header = document.getElementById('main-header');
+        const gnbNav = document.getElementById('gnb-nav');
+        const gnbToggle = document.getElementById('gnb-menu-toggle');
+        const gnbMegaMenu = document.getElementById('gnb-mega-menu');
+        const gnbMenuItems = document.querySelectorAll('.gnb-menu-item');
+        const megaMenuCols = document.querySelectorAll('.mega-menu-col');
+
+        // 헤더 배경 활성화 함수
+        function activateHeader(menuType) {
+            deactivateAllHeaders();
+            const col = document.getElementById(`menu-col-${menuType}`);
+            if (col) {
+                const menuHeader = col.querySelector('.menu-header');
+                if (menuHeader) {
+                    menuHeader.classList.remove('bg-slate-50', 'text-slate-800');
+                    menuHeader.classList.add('bg-[#e6f4ff]', 'text-[#0052cc]', 'font-bold');
+                }
+            }
+        }
+
+        // 전체 헤더 배경 비활성화 함수
+        function deactivateAllHeaders() {
+            megaMenuCols.forEach(col => {
+                const menuHeader = col.querySelector('.menu-header');
+                if (menuHeader) {
+                    menuHeader.classList.remove('bg-[#e6f4ff]', 'text-[#0052cc]', 'font-bold');
+                    menuHeader.classList.add('bg-slate-50', 'text-slate-800');
+                }
+            });
+        }
+
+        // Nav 메뉴 마우스 진입 시 메가 메뉴 표시
+        gnbNav.addEventListener('mouseenter', () => {
+            gnbMegaMenu.classList.remove('hidden');
+        });
+
+        // GNB 각 메뉴 아이템 호버 시 해당 컬럼 활성화
+        gnbMenuItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const menuType = item.getAttribute('data-menu');
+                activateHeader(menuType);
+            });
+        });
+
+        // 햄버거 메뉴 마우스 진입 시 메가 메뉴 표시
+        gnbToggle.addEventListener('mouseenter', () => {
+            gnbMegaMenu.classList.remove('hidden');
+        });
+
+        // 메가 메뉴 마우스 진입 시 유지
+        gnbMegaMenu.addEventListener('mouseenter', () => {
+            gnbMegaMenu.classList.remove('hidden');
+        });
+
+        // 메가 메뉴 개별 컬럼 호버 시 활성화
+        megaMenuCols.forEach(col => {
+            col.addEventListener('mouseenter', () => {
+                const id = col.getAttribute('id');
+                const menuType = id.replace('menu-col-', '');
+                activateHeader(menuType);
+            });
+        });
+
+        // 헤더 전체에서 마우스가 떠나면 메가 메뉴 숨김 및 활성화 해제
+        header.addEventListener('mouseleave', () => {
+            gnbMegaMenu.classList.add('hidden');
+            deactivateAllHeaders();
+        });
+
+        // 탭 전환 기능 함수
+        function switchTab(viewName) {
+            const dashboardView = document.getElementById('view-dashboard');
+            const contestView = document.getElementById('view-contest');
+            const judgingView = document.getElementById('view-judging');
+            const detailView = document.getElementById('view-detail');
+            const lnbDashboardHeader = document.getElementById('lnb-header-dashboard');
+            const lnbDashboardList = document.getElementById('lnb-list-dashboard');
+            const lnbUsageHeader = document.getElementById('lnb-header-usage');
+            const lnbUsageList = document.getElementById('lnb-list-usage');
+
+            const lnbItemContest = document.getElementById('lnb-item-contest');
+            const lnbItemJudging = document.getElementById('lnb-item-judging');
+
+            dashboardView.classList.toggle('hidden', viewName !== 'dashboard');
+            contestView.classList.toggle('hidden', viewName !== 'contest');
+            judgingView.classList.toggle('hidden', viewName !== 'judging');
+            detailView.classList.toggle('hidden', viewName !== 'detail');
+
+            if (viewName === 'dashboard') {
+                lnbDashboardHeader.classList.remove('hidden');
+                lnbDashboardList.classList.remove('hidden');
+                lnbUsageHeader.classList.add('hidden');
+                lnbUsageList.classList.add('hidden');
+            } else {
+                lnbDashboardHeader.classList.add('hidden');
+                lnbDashboardList.classList.add('hidden');
+                lnbUsageHeader.classList.remove('hidden');
+                lnbUsageList.classList.remove('hidden');
+
+                if (viewName === 'contest') {
+                    lnbItemContest.className = "block px-4 py-2.5 rounded-lg text-[14px] bg-[#1e293b] text-white font-bold transition-colors";
+                    lnbItemJudging.className = "block px-4 py-2.5 rounded-lg text-[14px] text-slate-600 hover:bg-slate-50 transition-colors";
+                } else if (viewName === 'judging' || viewName === 'detail') {
+                    lnbItemContest.className = "block px-4 py-2.5 rounded-lg text-[14px] text-slate-600 hover:bg-slate-50 transition-colors";
+                    lnbItemJudging.className = "block px-4 py-2.5 rounded-lg text-[14px] bg-[#1e293b] text-white font-bold transition-colors";
+                }
+            }
+            
+            // 메가 메뉴 숨기기
+            gnbMegaMenu.classList.add('hidden');
+            deactivateAllHeaders();
+        }
+    </script>
+</body>
+</html>

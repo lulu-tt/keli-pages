@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<title id="neibisTopTitle">강사지원교육 | 기본설정 | 한국고용노동교육원</title>
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+		
+		<!-- FontAwesome Icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+						},
+						colors: {
+							primary: {
+								50: '#f0f5ff',
+								100: '#e0ebff',
+								500: '#2563eb',
+								600: '#1d4ed8',
+								700: '#1e40af',
+							},
+							sidebar: {
+								bg: '#0f172a',
+								hover: '#1e293b',
+								active: '#2563eb',
+								text: '#cbd5e1',
+								textMuted: '#64748b',
+								border: '#1e293b',
+							}
+						}
+					}
+				}
+			}
+		</script>
+		
+		<style>
+			body {
+				font-family: 'Inter', 'Noto Sans KR', sans-serif;
+				background-color: #f8fafc;
+			}
+			/* Custom scrollbar */
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+			}
+			::-webkit-scrollbar-track {
+				background: #f1f5f9;
+			}
+			::-webkit-scrollbar-thumb {
+				background: #cbd5e1;
+				border-radius: 3px;
+			}
+			::-webkit-scrollbar-thumb:hover {
+				background: #94a3b8;
+			}
+
+			/* Sidebar Collapsed State Styles */
+			#sidebar.collapsed {
+				width: 4rem; /* w-16 */
+			}
+			#sidebar.collapsed .logo-text,
+			#sidebar.collapsed .px-3.mb-2,
+			#sidebar.collapsed span,
+			#sidebar.collapsed details summary i.fa-chevron-down,
+			#sidebar.collapsed .nav-title-text,
+			#sidebar.collapsed details ul {
+				display: none !important;
+			}
+			#sidebar.collapsed .sidebar-header {
+				justify-content: center;
+				padding: 1.25rem 0.5rem;
+			}
+			#sidebar.collapsed nav a, 
+			#sidebar.collapsed nav summary {
+				justify-content: center;
+				padding-left: 0;
+				padding-right: 0;
+			}
+			#sidebar.collapsed nav a i,
+			#sidebar.collapsed nav summary i {
+				margin-right: 0 !important;
+				font-size: 1.1rem;
+			}
+		</style>
+	</head>
+	<body class="overflow-hidden">
+		<!-- Main Layout Shell -->
+		<div class="flex flex-col h-screen w-screen bg-slate-50 text-slate-800">
+			
+			<!-- TOPBAR -->
+			<header class="h-16 bg-[#466793] flex items-center justify-between px-4 z-30 flex-shrink-0 text-white shadow-sm">
+				<div class="flex items-center gap-3">
+					<a href="#" class="flex items-center">
+						<img src="logo_wt.png" alt="한국고용노동교육원" class="h-12 object-contain" />
+					</a>
+				</div>
+				<div class="flex items-center gap-4 text-[11px] font-medium text-slate-100">
+					<span>조용우(20190005) [IP : 106.243.7.237] [2026.06.19 16:32] ( 세션만료 남은시간 - <span id="leftTimeInfo" class="font-mono font-bold text-yellow-300">00:58:06</span> )</span>
+					<div class="flex items-center gap-1">
+						<button onclick="reqTimeAjax()" class="px-2.5 py-1 bg-[#7a8f9d] hover:bg-[#687b89] text-white rounded text-[11px] transition">시간연장</button>
+						<button onclick="logoutSso()" class="px-2.5 py-1 bg-[#2b8aeb] hover:bg-[#1d73c9] text-white rounded text-[11px] transition">로그아웃</button>
+						<a href="#" class="px-2.5 py-1 bg-[#8b61cc] hover:bg-[#744eb3] text-white rounded text-[11px] transition">교육과정 개설 매뉴얼</a>
+					</div>
+				</div>
+			</header>
+
+			<div class="flex flex-1 overflow-hidden">
+				
+				<!-- SIDEBAR -->
+				<aside id="sidebar" class="w-64 bg-sidebar-bg border-r border-sidebar-border flex flex-col flex-shrink-0 z-20 transition-all duration-300">
+					<!-- Sidebar Header -->
+					<div class="p-3 border-b border-sidebar-border flex items-center justify-between sidebar-header">
+						<span class="logo-text text-xs font-bold text-slate-400 tracking-wide">LMS 메뉴</span>
+						<button type="button" id="sidebar-toggle" class="text-slate-400 hover:text-white transition" title="메뉴 접기">
+							<i class="fa-solid fa-angles-left text-xs"></i>
+						</button>
+					</div>
+
+					<!-- Sidebar Content -->
+					<div class="flex-1 overflow-y-auto py-4 px-3 space-y-4">
+						<nav class="space-y-1 text-xs">
+							<!-- 과정관리 -->
+							<details class="group">
+								<summary class="flex items-center justify-between px-3 py-2.5 text-sidebar-text hover:bg-sidebar-hover hover:text-white rounded-lg cursor-pointer list-none font-medium">
+									<span class="flex items-center gap-2">
+										<i class="fa-solid fa-graduation-cap text-sidebar-textMuted w-4"></i>
+										<span class="nav-title-text">과정관리</span>
+									</span>
+									<i class="fa-solid fa-chevron-down text-[10px] text-sidebar-textMuted transition-transform group-open:rotate-180"></i>
+								</summary>
+								<ul class="pl-6 mt-1 space-y-1 text-[11px] text-sidebar-text/80">
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">과정카테고리관리</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">마스터과정</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">연간교육계획</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">운영과정</a></li>
+								</ul>
+							</details>
+
+							<!-- 과목관리 -->
+							<details class="group">
+								<summary class="flex items-center justify-between px-3 py-2.5 text-sidebar-text hover:bg-sidebar-hover hover:text-white rounded-lg cursor-pointer list-none font-medium">
+									<span class="flex items-center gap-2">
+										<i class="fa-solid fa-book text-sidebar-textMuted w-4"></i>
+										<span class="nav-title-text">과목관리</span>
+									</span>
+									<i class="fa-solid fa-chevron-down text-[10px] text-sidebar-textMuted transition-transform group-open:rotate-180"></i>
+								</summary>
+								<ul class="pl-6 mt-1 space-y-1 text-[11px] text-sidebar-text/80">
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">이러닝</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">집체/실시간화상</a></li>
+								</ul>
+							</details>
+
+							<!-- 회원관리 -->
+							<details class="group">
+								<summary class="flex items-center justify-between px-3 py-2.5 text-sidebar-text hover:bg-sidebar-hover hover:text-white rounded-lg cursor-pointer list-none font-medium">
+									<span class="flex items-center gap-2">
+										<i class="fa-solid fa-users text-sidebar-textMuted w-4"></i>
+										<span class="nav-title-text">회원관리</span>
+									</span>
+									<i class="fa-solid fa-chevron-down text-[10px] text-sidebar-textMuted transition-transform group-open:rotate-180"></i>
+								</summary>
+								<ul class="pl-6 mt-1 space-y-1 text-[11px] text-sidebar-text/80">
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">학습자</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">강사관리</a></li>
+								</ul>
+							</details>
+
+							<!-- 강사지원교육 (Active) -->
+							<details open class="group">
+								<summary class="flex items-center justify-between px-3 py-2.5 text-white bg-sidebar-hover rounded-lg cursor-pointer list-none font-medium">
+									<span class="flex items-center gap-2">
+										<i class="fa-solid fa-chalkboard-user text-primary-500 w-4"></i>
+										<span class="nav-title-text">강사지원교육</span>
+									</span>
+									<i class="fa-solid fa-chevron-down text-[10px] text-sidebar-textMuted transition-transform group-open:rotate-180"></i>
+								</summary>
+								<ul class="pl-6 mt-1 space-y-1 text-[11px] text-sidebar-text/80">
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">청소년지원교육</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">사업장지원교육</a></li>
+									<li><a href="#" class="block py-1.5 px-3 text-white bg-primary-600 font-bold rounded">기본설정</a></li>
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">노출기준</a></li>
+								</ul>
+							</details>
+
+							<!-- 콘텐츠관리 -->
+							<details class="group">
+								<summary class="flex items-center justify-between px-3 py-2.5 text-sidebar-text hover:bg-sidebar-hover hover:text-white rounded-lg cursor-pointer list-none font-medium">
+									<span class="flex items-center gap-2">
+										<i class="fa-solid fa-photo-film text-sidebar-textMuted w-4"></i>
+										<span class="nav-title-text">콘텐츠관리</span>
+									</span>
+									<i class="fa-solid fa-chevron-down text-[10px] text-sidebar-textMuted transition-transform group-open:rotate-180"></i>
+								</summary>
+								<ul class="pl-6 mt-1 space-y-1 text-[11px] text-sidebar-text/80">
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">WBI콘텐츠</a></li>
+								</ul>
+							</details>
+
+							<!-- 게시판관리 -->
+							<details class="group">
+								<summary class="flex items-center justify-between px-3 py-2.5 text-sidebar-text hover:bg-sidebar-hover hover:text-white rounded-lg cursor-pointer list-none font-medium">
+									<span class="flex items-center gap-2">
+										<i class="fa-solid fa-clipboard text-sidebar-textMuted w-4"></i>
+										<span class="nav-title-text">게시판관리</span>
+									</span>
+									<i class="fa-solid fa-chevron-down text-[10px] text-sidebar-textMuted transition-transform group-open:rotate-180"></i>
+								</summary>
+								<ul class="pl-6 mt-1 space-y-1 text-[11px] text-sidebar-text/80">
+									<li><a href="#" class="block py-1.5 px-3 hover:text-white rounded">일반공지</a></li>
+								</ul>
+							</details>
+						</nav>
+					</div>
+
+
+				</aside>
+				
+				<!-- MAIN CONTENT AREA -->
+				<div class="flex-1 flex flex-col overflow-hidden">
+					
+
+				<!-- Tabs Area -->
+				<div class="bg-white border-b border-slate-200 flex items-center justify-between px-6 py-2 flex-shrink-0">
+					<ul class="flex items-center gap-1.5 text-xs font-semibold">
+						<li>
+							<a href="#" class="px-3 py-1.5 rounded-lg text-slate-500 hover:bg-slate-50 transition-all flex items-center gap-1.5">
+								<span>메인</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="px-3 py-1.5 rounded-lg text-slate-500 hover:bg-slate-50 transition-all flex items-center gap-1.5">
+								<span>청소년지원교육</span>
+								<i class="fa-solid fa-xmark text-[10px] text-slate-400 hover:text-slate-600"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="px-3 py-1.5 rounded-lg text-slate-500 hover:bg-slate-50 transition-all flex items-center gap-1.5">
+								<span>사업장지원교육</span>
+								<i class="fa-solid fa-xmark text-[10px] text-slate-400 hover:text-slate-600"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-100 flex items-center gap-1.5">
+								<span>기본설정</span>
+								<i class="fa-solid fa-xmark text-[10px] text-blue-400"></i>
+							</a>
+						</li>
+						<li>
+							<button class="px-2.5 py-1 text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-lg text-[11px] font-bold transition flex items-center gap-1">
+								<span>탭추가</span>
+								<i class="fa-solid fa-plus text-[10px]"></i>
+							</button>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Scrollable Content Body -->
+				<main class="flex-1 overflow-y-auto p-6 space-y-6">
+					
+					<!-- Content Header -->
+					<div class="bg-white rounded-2xl p-6 border border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-sm">
+						<div>
+							<div class="flex items-center gap-2">
+								<h2 class="text-lg font-bold text-slate-800">기본설정</h2>
+								<button class="px-2 py-0.5 bg-blue-50 text-blue-600 border border-blue-200 rounded text-[11px] font-bold transition flex items-center gap-1">
+									<i class="fa-solid fa-star text-[10px]"></i>
+									<span>즐겨찾기</span>
+								</button>
+								<button class="px-2 py-0.5 bg-slate-100 text-slate-600 border border-slate-200 rounded text-[11px] font-bold transition flex items-center gap-1">
+									<i class="fa-solid fa-circle-question text-[10px]"></i>
+									<span>매뉴얼</span>
+								</button>
+							</div>
+							<p class="text-xs text-slate-400 mt-1">강사지원교육(청소년 및 사업장 지원 교육)에 사용되는 기본 접수 일정과 상태 문구 템플릿을 설정합니다.</p>
+						</div>
+						<div class="flex items-center gap-2 self-end md:self-auto">
+							<button onclick="saveSettings()" class="px-5 py-2 bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs rounded-xl transition shadow-md shadow-primary-500/10 min-w-[70px] text-center">저장</button>
+						</div>
+					</div>
+
+					<!-- SUB-TAB CONTENT CARD -->
+					<div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+						<!-- Sub-navigation Tabs -->
+						<div class="border-b border-slate-200 bg-slate-50/50 flex">
+							<button id="tab-btn-youth" onclick="switchSubTab('youth')" class="px-6 py-3.5 text-xs font-bold border-b-2 border-primary-600 text-primary-600 bg-white transition-all">청소년지원교육</button>
+							<button id="tab-btn-workplace" onclick="switchSubTab('workplace')" class="px-6 py-3.5 text-xs font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all">사업장지원교육</button>
+						</div>
+
+						<form id="settings-form" class="p-6">
+							
+							<!-- ========================================== -->
+							<!-- 청소년지원교육 탭 콘텐츠 -->
+							<!-- ========================================== -->
+							<div id="content-youth" class="space-y-8">
+								<!-- 1. 교육신청기간 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">1. 교육신청기간</h4>
+									</div>
+									
+									<div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/30">
+										<table class="w-full text-left border-collapse text-xs">
+											<tbody class="divide-y divide-slate-100 bg-white">
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">청소년을 위한 찾아가는 고용노동교육</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-12-31" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">청년을 위한 찾아가는 고용노동교육</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-12-31" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">청소년 취업활성화 고용노동교육</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2025-07-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-03-12" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">260401 청소년지원교육 테스트</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-04-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">고용노동캠프(U20대학수능특강)</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2025-10-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-12-31" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<!-- 2. 승인/반려문구 관리 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">2. 승인/반려문구 관리</h4>
+									</div>
+									
+									<div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/30">
+										<table class="w-full text-left border-collapse text-xs">
+											<tbody class="divide-y divide-slate-100 bg-white">
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">
+														<div class="flex flex-col gap-2">
+															<span>승인문구</span>
+															<button type="button" onclick="loadDefaultText('approve')" class="w-20 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded transition">기본문구</button>
+														</div>
+													</td>
+													<td class="p-3.5">
+														<textarea id="approve-text" rows="3" class="w-full border border-slate-200 rounded-lg p-3 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">한국고용노동교육원 청소년/청년고용노동교육을 신청하여 주셔서 감사합니다. 귀 학교의 신청은 기재해 주신 내용에 따라 세부내용 조율 후 진행될 예정입니다. 교육내용에 대한 강사가 교육 2주 전까지 배정될 예정이오니 출강강사 현황을 추후에 확인하여 주시기 바랍니다.</textarea>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">
+														<div class="flex flex-col gap-2">
+															<span>반려문구</span>
+															<button type="button" onclick="loadDefaultText('reject')" class="w-20 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded transition">기본문구</button>
+														</div>
+													</td>
+													<td class="p-3.5">
+														<textarea id="reject-text" rows="3" class="w-full border border-slate-200 rounded-lg p-3 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">청소년/청년고용노동교육 우선지원대상 선정기준에 따라 지원 학교에 선정되지 않았음을 안내드리며, 예산 등 여러 상황으로 모든 학교에 지원이 어려운 점 양해 부탁드립니다. 보여주신 관심에 다시 한 번 감사드립니다.</textarea>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<!-- 3. 강사지정기간 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">3. 강사지정기간</h4>
+									</div>
+									
+									<div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/30">
+										<table class="w-full text-left border-collapse text-xs">
+											<tbody class="divide-y divide-slate-100 bg-white">
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">청소년을 위한 찾아가는 고용노동교육</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="11:30" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-04-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="11:30" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-300 mx-2">|</span>
+														<span class="text-slate-500 font-semibold">신청개수제한</span>
+														<select class="border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white w-24">
+															<option value="5">5개</option>
+															<option value="10">10개</option>
+															<option value="20" selected>20개</option>
+															<option value="30">30개</option>
+															<option value="50">50개</option>
+														</select>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">청년을 위한 찾아가는 고용노동교육</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-04-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-300 mx-2">|</span>
+														<span class="text-slate-500 font-semibold">신청개수제한</span>
+														<select class="border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white w-24">
+															<option value="5">5개</option>
+															<option value="10">10개</option>
+															<option value="20" selected>20개</option>
+															<option value="30">30개</option>
+															<option value="50">50개</option>
+														</select>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">청소년 취업활성화 고용노동교육</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-04-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-300 mx-2">|</span>
+														<span class="text-slate-500 font-semibold">신청개수제한</span>
+														<select class="border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white w-24">
+															<option value="5">5개</option>
+															<option value="10">10개</option>
+															<option value="20" selected>20개</option>
+															<option value="30">30개</option>
+															<option value="50">50개</option>
+														</select>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">260401 청소년지원교육 테스트</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-04-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-300 mx-2">|</span>
+														<span class="text-slate-500 font-semibold">신청개수제한</span>
+														<select class="border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white w-24">
+															<option value="5">5개</option>
+															<option value="10">10개</option>
+															<option value="20" selected>20개</option>
+															<option value="30">30개</option>
+															<option value="50">50개</option>
+														</select>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">고용노동캠프(U20대학수능특강)</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="00:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-04-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="18:00" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-300 mx-2">|</span>
+														<span class="text-slate-500 font-semibold">신청개수제한</span>
+														<select class="border border-slate-200 rounded-lg px-2 py-1 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white w-24">
+															<option value="5">5개</option>
+															<option value="10">10개</option>
+															<option value="20" selected>20개</option>
+															<option value="30">30개</option>
+															<option value="50">50개</option>
+														</select>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<!-- 4. 포털검사 유무 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">4. 포털검사 유무</h4>
+									</div>
+									<div class="p-4 border border-slate-100 bg-white rounded-xl flex items-center gap-6 text-xs text-slate-600">
+										<label class="flex items-center gap-2 cursor-pointer select-none">
+											<input type="radio" name="portal-test" value="Y" checked class="w-4 h-4 text-primary-600 border-slate-300 focus:ring-primary-500">
+											<span class="font-semibold text-slate-700">유</span>
+										</label>
+										<label class="flex items-center gap-2 cursor-pointer select-none">
+											<input type="radio" name="portal-test" value="N" class="w-4 h-4 text-primary-600 border-slate-300 focus:ring-primary-500">
+											<span class="font-semibold text-slate-700">무</span>
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<!-- ========================================== -->
+							<!-- 사업장지원교육 탭 콘텐츠 (기본 hidden) -->
+							<!-- ========================================== -->
+							<div id="content-workplace" class="space-y-8 hidden">
+								<!-- 1. 교육신청기간 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">1. 교육신청기간</h4>
+									</div>
+									
+									<div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/30">
+										<table class="w-full text-left border-collapse text-xs">
+											<tbody class="divide-y divide-slate-100 bg-white">
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">고도화테스트 -집합</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2025-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2025-12-31" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">특고·플랫폼 현장지원과정</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-06-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">2025년도 직장 내 괴롭힘 예방교육 사업장 강사지원</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-01-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-06-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">고도화테스트 -집합</td>
+													<td class="p-3.5 flex items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2025-07-01" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-12-31" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<!-- 2. 승인/반려문구 관리 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">2. 승인/반려문구 관리</h4>
+									</div>
+									
+									<div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/30">
+										<table class="w-full text-left border-collapse text-xs">
+											<tbody class="divide-y divide-slate-100 bg-white">
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">
+														<div class="flex flex-col gap-2">
+															<span>승인문구</span>
+															<button type="button" onclick="loadDefaultText('approve_wp')" class="w-20 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded transition">기본문구</button>
+														</div>
+													</td>
+													<td class="p-3.5">
+														<textarea id="approve-text-wp" rows="3" class="w-full border border-slate-200 rounded-lg p-3 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">승인되었습니다.</textarea>
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">
+														<div class="flex flex-col gap-2">
+															<span>반려문구</span>
+															<button type="button" onclick="loadDefaultText('reject_wp')" class="w-20 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded transition">기본문구</button>
+														</div>
+													</td>
+													<td class="p-3.5">
+														<textarea id="reject-text-wp" rows="3" class="w-full border border-slate-200 rounded-lg p-3 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">반려되었습니다.</textarea>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<!-- 3. 강사지정기간 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">3. 강사지정기간</h4>
+									</div>
+									
+									<div class="border border-slate-100 rounded-xl overflow-hidden bg-slate-50/30">
+										<table class="w-full text-left border-collapse text-xs">
+											<tbody class="divide-y divide-slate-100 bg-white">
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">고도화테스트 -집합</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" placeholder="시작일" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" placeholder="시작시간" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" placeholder="종료일" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" placeholder="종료시간" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">특고·플랫폼 현장지원과정</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-03-03" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="23:30" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" value="2026-06-30" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" value="23:30" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">2025년도 직장 내 괴롭힘 예방교육 사업장 강사지원</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" placeholder="시작일" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" placeholder="시작시간" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" placeholder="종료일" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" placeholder="종료시간" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+													</td>
+												</tr>
+												<tr class="hover:bg-slate-50/50 transition">
+													<td class="p-3.5 w-64 font-semibold text-slate-500 bg-slate-50/50 border-r border-slate-100">고도화테스트 -집합</td>
+													<td class="p-3.5 flex flex-wrap items-center gap-2">
+														<div class="relative max-w-[150px]">
+															<input type="text" placeholder="시작일" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" placeholder="시작시간" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+														<span class="text-slate-400">~</span>
+														<div class="relative max-w-[150px]">
+															<input type="text" placeholder="종료일" class="w-full border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+															<i class="fa-regular fa-calendar absolute right-2.5 top-2.5 text-slate-400"></i>
+														</div>
+														<input type="text" placeholder="종료시간" class="w-16 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-center text-slate-600 focus:outline-none focus:ring-1 focus:ring-primary-500">
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<!-- 4. 요청강사 유무 -->
+								<div class="space-y-3">
+									<div class="flex items-center gap-2 border-l-4 border-primary-600 pl-3">
+										<h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">4. 요청강사 유무</h4>
+									</div>
+									<div class="p-4 border border-slate-100 bg-white rounded-xl flex items-center gap-6 text-xs text-slate-600">
+										<label class="flex items-center gap-2 cursor-pointer select-none">
+											<input type="radio" name="request-instructor" value="Y" class="w-4 h-4 text-primary-600 border-slate-300 focus:ring-primary-500">
+											<span class="font-semibold text-slate-700">유</span>
+										</label>
+										<label class="flex items-center gap-2 cursor-pointer select-none">
+											<input type="radio" name="request-instructor" value="N" checked class="w-4 h-4 text-primary-600 border-slate-300 focus:ring-primary-500">
+											<span class="font-semibold text-slate-700">무</span>
+										</label>
+									</div>
+								</div>
+							</div>
+
+
+							<!-- Submit button at the bottom -->
+							<div class="flex justify-end pt-4 border-t border-slate-100 mt-8">
+								<button onclick="saveSettings()" class="px-5 py-2 bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs rounded-xl transition shadow-md shadow-primary-500/10 min-w-[70px] text-center">저장</button>
+							</div>
+						</form>
+					</div>
+				</main>
+				
+
+			</div>
+		</div>
+		
+		<script>
+			// 사이드바 접기/펼치기 토글 스크립트
+			const sidebar = document.getElementById('sidebar');
+			const sidebarToggle = document.getElementById('sidebar-toggle');
+			const toggleSidebarIcon = sidebarToggle.querySelector('i');
+
+			sidebarToggle.addEventListener('click', function() {
+				sidebar.classList.toggle('collapsed');
+				if (sidebar.classList.contains('collapsed')) {
+					toggleSidebarIcon.classList.remove('fa-angles-left');
+					toggleSidebarIcon.classList.add('fa-angles-right');
+					sidebarToggle.setAttribute('title', '메뉴 펼치기');
+				} else {
+					toggleSidebarIcon.classList.remove('fa-angles-right');
+					toggleSidebarIcon.classList.add('fa-angles-left');
+					sidebarToggle.setAttribute('title', '메뉴 접기');
+				}
+			});
+
+			// 아코디언 토글 서브메뉴
+			const detailsElements = document.querySelectorAll('details.group');
+			detailsElements.forEach(detail => {
+				detail.addEventListener('toggle', () => {
+					if (detail.open) {
+						detailsElements.forEach(otherDetail => {
+							if (otherDetail !== detail) {
+								otherDetail.open = false;
+							}
+						});
+					}
+				});
+			});
+
+			// 서브탭 전환 기능 (청소년지원교육 <-> 사업장지원교육)
+			function switchSubTab(tab) {
+				const btnYouth = document.getElementById('tab-btn-youth');
+				const btnWorkplace = document.getElementById('tab-btn-workplace');
+				const contentYouth = document.getElementById('content-youth');
+				const contentWorkplace = document.getElementById('content-workplace');
+				
+				btnYouth.className = "px-6 py-3.5 text-xs font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all";
+				btnWorkplace.className = "px-6 py-3.5 text-xs font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-all";
+				
+				if (tab === 'youth') {
+					btnYouth.className = "px-6 py-3.5 text-xs font-bold border-b-2 border-primary-600 text-primary-600 bg-white transition-all";
+					contentYouth.classList.remove('hidden');
+					contentWorkplace.classList.add('hidden');
+				} else {
+					btnWorkplace.className = "px-6 py-3.5 text-xs font-bold border-b-2 border-primary-600 text-primary-600 bg-white transition-all";
+					contentYouth.classList.add('hidden');
+					contentWorkplace.classList.remove('hidden');
+				}
+			}
+
+			// 기본문구 채우기 기능
+			function loadDefaultText(type) {
+				if (type === 'approve') {
+					document.getElementById('approve-text').value = "한국고용노동교육원 청소년/청년고용노동교육을 신청하여 주셔서 감사합니다. 귀 학교의 신청은 기재해 주신 내용에 따라 세부내용 조율 후 진행될 예정입니다. 교육내용에 대한 강사가 교육 2주 전까지 배정될 예정이오니 출강강사 현황을 추후에 확인하여 주시기 바랍니다.";
+				} else if (type === 'reject') {
+					document.getElementById('reject-text').value = "청소년/청년고용노동교육 우선지원대상 선정기준에 따라 지원 학교에 선정되지 않았음을 안내드리며, 예산 등 여러 상황으로 모든 학교에 지원이 어려운 점 양해 부탁드립니다. 보여주신 관심에 다시 한 번 감사드립니다.";
+				} else if (type === 'approve_wp') {
+					document.getElementById('approve-text-wp').value = "승인되었습니다.";
+				} else if (type === 'reject_wp') {
+					document.getElementById('reject-text-wp').value = "반려되었습니다.";
+				}
+			}
+
+			// 저장 액션 시뮬레이션
+			function saveSettings() {
+				alert('기본설정 내용이 정상적으로 저장되었습니다.');
+			}
+
+			// 세션 타이머 시뮬레이션
+			let totalSec = 58 * 60 + 6;
+			function updateSessionTimer() {
+				const leftTimeInfo = document.getElementById('leftTimeInfo');
+				if (!leftTimeInfo) return;
+				
+				const h = Math.floor(totalSec / 3600);
+				const m = Math.floor((totalSec % 3600) / 60);
+				const s = totalSec % 60;
+				
+				leftTimeInfo.textContent = 
+					String(h).padStart(2, '0') + ':' + 
+					String(m).padStart(2, '0') + ':' + 
+					String(s).padStart(2, '0');
+				
+				if (totalSec > 0) totalSec--;
+			}
+			setInterval(updateSessionTimer, 1000);
+
+			function reqTimeAjax() {
+				totalSec = 60 * 60;
+				alert('세션 만료 시간이 60분으로 연장되었습니다.');
+			}
+
+			function logoutSso() {
+				if (confirm('로그아웃 하시겠습니까?')) {
+					location.href = 'login.html';
+				}
+			}
+		</script>
+	</body>
+</html>

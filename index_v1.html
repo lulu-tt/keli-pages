@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국고용노동교육원 | KELI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .container-custom {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .bg-keli-blue {
+            background-color: #0052cc;
+        }
+        .text-keli-blue {
+            color: #0052cc;
+        }
+        .bg-hero {
+            background: linear-gradient(to right, #f8fbff 0%, #f0f7ff 100%);
+        }
+        .search-shadow {
+            box-shadow: 0 10px 30px rgba(0, 82, 204, 0.1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        .tab-active {
+            border-bottom: 4px solid #0052cc;
+            color: #0052cc;
+            font-weight: 700;
+        }
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .badge-gray { background-color: #f1f5f9; color: #64748b; }
+        .badge-blue { background-color: #eef6ff; color: #0052cc; }
+        .badge-green { background-color: #ecfdf5; color: #059669; }
+        .badge-orange { background-color: #fff7ed; color: #ea580c; }
+        
+        .shadow-premium {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .top-tab {
+            padding: 0 20px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .top-tab.active {
+            background-color: #ffffff;
+            color: #003478;
+            font-weight: 700;
+        }
+        .social-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 40px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-[#001d43] text-white overflow-hidden">
+        <div class="container-custom flex justify-between items-center !p-0">
+            <div class="flex items-center">
+                <a href="#" class="top-tab active">교육플랫폼</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">정보플랫폼</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">기관소개</a>
+                <a href="#" class="top-tab text-white/70 hover:bg-white/5">마이페이지</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="flex items-center gap-4 text-[12px]">
+                    <a href="#" class="flex items-center gap-1.5 hover:text-blue-300"><i class="bi bi-lock"></i> 로그인</a>
+                    <a href="#" class="flex items-center gap-1.5 font-bold hover:text-blue-300"><i class="bi bi-person"></i> 회원가입</a>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-blue-300">
+                        <i class="bi bi-globe"></i> KO <i class="bi bi-chevron-down text-[8px]"></i>
+                    </div>
+                </div>
+                <div class="social-box">
+                    <a href="#" class="hover:opacity-70"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="hover:opacity-70"><i class="bi bi-browser-chrome"></i></a>
+                    <a href="#" class="hover:opacity-70"><i class="bi bi-chat-fill"></i></a>
+                    <a href="#" class="hover:opacity-70"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+        <div class="container-custom py-4 flex justify-between items-center">
+            <div class="flex items-center gap-12 flex-1">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-4">
+                    <img src="img_signature_pc.png" alt="KELI Logo" class="h-11">
+                    <div class="w-[1px] h-5 bg-slate-200 mx-1"></div>
+                    <span class="text-[15px] font-bold text-[#333] tracking-tight">교육플랫폼</span>
+                </div>
+                
+                <!-- Main Navigation (Aligned to Right) -->
+                <nav class="hidden lg:flex gap-10 text-[16px] font-bold text-[#333] ml-auto mr-12">
+                    <a href="#" class="hover:text-keli-blue transition-colors">수강현황</a>
+                    <a href="#" class="hover:text-keli-blue transition-colors">나의 이용현황</a>
+                    <a href="#" class="hover:text-keli-blue transition-colors">개인정보</a>
+                </nav>
+            </div>
+            
+            <!-- Right Icons -->
+            <div class="flex items-center gap-6">
+                <button class="text-2xl text-slate-800 hover:text-keli-blue"><i class="bi bi-search"></i></button>
+                <div id="gnb-menu-toggle" class="flex flex-col gap-1.5 cursor-pointer group">
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keli-blue transition-all"></span>
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keli-blue transition-all"></span>
+                    <span class="w-7 h-0.5 bg-slate-800 group-hover:bg-keli-blue transition-all"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GNB Mega Dropdown Menu (펼침화면) -->
+        <div id="gnb-mega-menu" class="hidden absolute left-0 top-full w-full bg-white border-b border-slate-200 shadow-xl z-50 transition-all duration-300">
+            <div class="container-custom py-10 grid grid-cols-3 gap-8">
+                <!-- Column 1: 수강현황 -->
+                <div class="border-r border-slate-100 pr-8">
+                    <div class="bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center">
+                        <h3 class="font-bold text-slate-800 text-[16px]">수강현황</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 수강현황</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: 나의 이용현황 -->
+                <div class="border-r border-slate-100 pr-8">
+                    <div class="bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center">
+                        <h3 class="font-bold text-slate-800 text-[16px]">나의 이용현황</h3>
+                    </div>
+                    <ul class="space-y-3.5 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 고객의 소리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 공모전 참여현황/관리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 스크랩</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 교육/학습후기</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 나의 커뮤니티</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 학습자료실</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 현장지원 교육 신청내역/관리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 강의전문위원 신청/관리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 자료사용 신청현황/관리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 나에게 공개된 자료</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 신청현황</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 자료 등록/관리 현황</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 자료 신청현황/관리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 유관기관 담당자 관리</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> Open API 신청 현황/관리</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: 개인정보 -->
+                <div>
+                    <div class="bg-slate-50 py-3 px-5 rounded-lg mb-6 text-center">
+                        <h3 class="font-bold text-slate-800 text-[16px]">개인정보</h3>
+                    </div>
+                    <ul class="space-y-4 text-[14px] text-slate-500 font-medium pl-4">
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 회원정보 수정</a></li>
+                        <li><a href="#" class="hover:text-keli-blue flex items-center gap-2"><i class="bi bi-chevron-right text-[10px]"></i> 회원정보통합</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 하단 장식 카드 영역 (소속/활동 요약) -->
+            <div class="bg-slate-50 border-t border-slate-200 py-6">
+                <div class="container-custom grid grid-cols-2 gap-8 text-[13px] text-slate-600">
+                    <div class="flex items-center gap-12 bg-white p-4 rounded-lg border border-slate-100 shadow-sm pl-8">
+                        <div class="space-y-1">
+                            <p><strong>• 소속 :</strong> 커리어스타</p>
+                            <p><strong>• 최근 접속일 :</strong> 2025-07-17</p>
+                        </div>
+                        <a href="#" class="ml-auto bg-[#3e3e3e] text-white py-1.5 px-4 rounded text-xs font-bold hover:bg-black transition-colors flex items-center gap-1">
+                            바로가기 <i class="bi bi-arrow-right text-[10px]"></i>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-12 bg-white p-4 rounded-lg border border-slate-100 shadow-sm pl-8">
+                        <div class="space-y-1">
+                            <p><strong>• 스크랩 :</strong> <span class="text-keli-blue font-bold">12</span> 건</p>
+                            <p><strong>• 교육/학습 후기 작성 :</strong> <span class="text-keli-blue font-bold">5</span> 건</p>
+                            <p><strong>• 자료 댓글 작성 :</strong> <span class="text-keli-blue font-bold">8</span> 건</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-hero py-20 relative">
+        <div class="container-custom flex flex-col lg:flex-row gap-12 items-center">
+            <div class="flex-1">
+                <div class="relative">
+                    <h2 class="text-4xl font-bold text-[#111] leading-tight mb-3">
+                        필요한 교육을 <span class="text-keli-blue">빠르게</span> 찾아보세요.
+                    </h2>
+                    <p class="text-slate-500 mb-10 text-lg">대상, 주제, 교육방식에 따라 원하는 교육을 쉽게 찾을 수 있습니다.</p>
+                    
+                    <div class="flex items-stretch gap-3 max-w-2xl">
+                        <div class="relative flex-1 flex items-center">
+                            <input type="text" placeholder="교육과정명, 키워드, 대상자를 검색하세요" 
+                                   class="w-full py-5 pl-8 pr-24 rounded-md border border-slate-200 outline-none search-shadow text-lg focus:border-keli-blue transition-all">
+                            <button class="absolute right-0 top-0 h-full bg-keli-blue text-white px-8 rounded-r-md hover:bg-[#0044a0] transition-colors">
+                                <i class="bi bi-search text-xl"></i>
+                            </button>
+                        </div>
+                        <!-- AI 검색 바로가기 단추 (검색창 바깥 배치) -->
+                        <a href="keli_ai.html" class="flex items-center justify-center gap-2 px-6 rounded-md bg-gradient-to-r from-blue-600 to-teal-400 hover:from-blue-700 hover:to-teal-500 text-white font-bold text-base shadow-[0_4px_15px_rgba(0,82,204,0.15)] hover:shadow-[0_6px_20px_rgba(0,82,204,0.3)] transition-all duration-200 hover:-translate-y-[2px] whitespace-nowrap">
+                            <i class="bi bi-lightning-charge-fill text-yellow-200 text-sm"></i>
+                            <span>AI 검색</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-6 flex items-center gap-4">
+                        <span class="text-sm font-bold text-slate-600">추천 키워드</span>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="#" class="px-4 py-1.5 bg-white border border-slate-100 rounded-sm text-xs text-slate-500 hover:border-keli-blue transition-all">기초노동법</a>
+                            <a href="#" class="px-4 py-1.5 bg-white border border-slate-100 rounded-sm text-xs text-slate-500 hover:border-keli-blue transition-all">직장 내 괴롭힘</a>
+                            <a href="#" class="px-4 py-1.5 bg-white border border-slate-100 rounded-sm text-xs text-slate-500 hover:border-keli-blue transition-all">청소년 노동인권</a>
+                            <a href="#" class="px-4 py-1.5 bg-white border border-slate-100 rounded-sm text-xs text-slate-500 hover:border-keli-blue transition-all">근로기준법</a>
+                            <a href="#" class="px-4 py-1.5 bg-white border border-slate-100 rounded-sm text-xs text-slate-500 hover:border-keli-blue transition-all">인사노무</a>
+                            <a href="#" class="px-4 py-1.5 bg-white border border-slate-100 rounded-sm text-xs text-slate-500 hover:border-keli-blue transition-all">산업안전</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:w-[640px] grid grid-cols-4 gap-3">
+                <!-- Icon Cards -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-people"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">청소년지원교육</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-building"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">기관/기업지원교육</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-mortarboard"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">강사신청</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-headset"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">원격지원</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border-2 border-keli-blue/40 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-play-btn"></i></div>
+                    <span class="text-[13px] font-bold text-keli-blue text-center whitespace-nowrap">나의 강의실</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-file-earmark-check"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">수료증발급</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-receipt"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">영수증발급</span>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow-sm border border-slate-50 flex flex-col items-center justify-center gap-3 card-hover cursor-pointer aspect-square">
+                    <div class="text-keli-blue text-3xl"><i class="bi bi-book"></i></div>
+                    <span class="text-[13px] font-bold text-center whitespace-nowrap">사용자매뉴얼</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Programs -->
+    <section class="py-12 bg-white">
+        <div class="container-custom">
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-[#111]">교육과정</h2>
+            </div>
+            
+            <div class="flex justify-between items-end border-b border-slate-100 mb-8">
+                <div class="flex gap-10 text-lg font-bold text-slate-300">
+                    <button class="pb-4 tab-active">집합교육</button>
+                    <button class="pb-4 hover:text-slate-500">이러닝교육</button>
+                </div>
+                <button class="w-10 h-10 border border-slate-200 rounded-full flex items-center justify-center hover:bg-slate-50 transition-all mb-3 text-slate-400">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+
+            <div class="relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- Program Card 1 -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-7 card-hover flex flex-col h-full">
+                        <div class="flex gap-1.5 mb-5">
+                            <span class="status-badge badge-gray">집합교육</span>
+                            <span class="status-badge badge-blue">무료</span>
+                            <span class="status-badge badge-green">신청 가능</span>
+                        </div>
+                        <h3 class="text-[17px] font-bold text-slate-800 mb-8 leading-relaxed flex-grow">기초노동법 이해</h3>
+                        <div class="space-y-2.5 text-[13px] text-slate-500 mb-8">
+                            <p class="flex items-center gap-2"><i class="bi bi-calendar3"></i> 신청기간 : 2024.05.01 ~ 05.30</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-clock"></i> 교육기간 : 2024.06.03 ~ 06.30</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-hourglass-split"></i> 학습시간 : 8시간</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-keli-blue text-white py-2.5 rounded text-sm font-bold hover:bg-[#0044a0]">신청하기</button>
+                            <button class="flex-1 border border-slate-200 text-slate-600 py-2.5 rounded text-sm font-bold hover:bg-slate-50">상세보기</button>
+                        </div>
+                    </div>
+
+                    <!-- Program Card 2 (Special Border) -->
+                    <div class="bg-white border-2 border-keli-blue rounded-xl p-7 shadow-lg flex flex-col h-full">
+                        <div class="flex gap-1.5 mb-5">
+                            <span class="status-badge badge-gray">집합교육</span>
+                            <span class="status-badge badge-blue">무료</span>
+                            <span class="status-badge badge-green">신청 가능</span>
+                        </div>
+                        <h3 class="text-[17px] font-bold text-slate-800 mb-8 leading-relaxed flex-grow">근로계약과 근로조건 실무</h3>
+                        <div class="space-y-2.5 text-[13px] text-slate-500 mb-8">
+                            <p class="flex items-center gap-2"><i class="bi bi-calendar3"></i> 신청기간 : 2024.05.02 ~ 05.28</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-clock text-keli-blue"></i> <span class="text-keli-blue">교육기간 : 2024.06.05(수) 14:00~17:00</span></p>
+                            <p class="flex items-center gap-2"><i class="bi bi-geo-alt"></i> 교육장소 : 서울경영센터</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-[#001e4a] text-white py-2.5 rounded text-sm font-bold">신청하기</button>
+                            <button class="flex-1 border border-slate-200 text-slate-600 py-2.5 rounded text-sm font-bold">상세보기</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-7 card-hover flex flex-col h-full">
+                        <div class="flex gap-1.5 mb-5">
+                            <span class="status-badge badge-gray">이러닝</span>
+                            <span class="status-badge badge-blue">무료</span>
+                            <span class="status-badge badge-green">신청 가능</span>
+                        </div>
+                        <h3 class="text-[17px] font-bold text-slate-800 mb-8 leading-relaxed flex-grow">청소년 노동인권 교육</h3>
+                        <div class="space-y-2.5 text-[13px] text-slate-500 mb-8">
+                            <p class="flex items-center gap-2"><i class="bi bi-calendar3"></i> 신청기간 : 2024.05.01 ~ 05.15</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-clock"></i> 교육기간 : 2024.05.27 ~ 06.16</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-hourglass-split"></i> 학습시간 : 3시간</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-keli-blue text-white py-2.5 rounded text-sm font-bold">신청하기</button>
+                            <button class="flex-1 border border-slate-200 text-slate-600 py-2.5 rounded text-sm font-bold">상세보기</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-7 card-hover flex flex-col h-full">
+                        <div class="flex gap-1.5 mb-5">
+                            <span class="status-badge badge-gray">이러닝</span>
+                            <span class="status-badge badge-orange">유료</span>
+                            <span class="status-badge badge-green">신청 가능</span>
+                        </div>
+                        <h3 class="text-[17px] font-bold text-slate-800 mb-8 leading-relaxed flex-grow">인사노무관리 실무</h3>
+                        <div class="space-y-2.5 text-[13px] text-slate-500 mb-8">
+                            <p class="flex items-center gap-2"><i class="bi bi-calendar3"></i> 신청기간 : 2024.05.03 ~ 06.05</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-clock"></i> 교육기간 : 2024.06.10 ~ 07.10</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-hourglass-split"></i> 학습시간 : 10시간</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-keli-blue text-white py-2.5 rounded text-sm font-bold">신청하기</button>
+                            <button class="flex-1 border border-slate-200 text-slate-600 py-2.5 rounded text-sm font-bold">상세보기</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="bg-white border border-slate-100 rounded-xl p-7 card-hover flex flex-col h-full">
+                        <div class="flex gap-1.5 mb-5">
+                            <span class="status-badge badge-gray">집합교육</span>
+                            <span class="status-badge badge-blue">무료</span>
+                            <span class="status-badge badge-green">신청 가능</span>
+                        </div>
+                        <h3 class="text-[17px] font-bold text-slate-800 mb-8 leading-relaxed flex-grow">직장 내 괴롭힘 예방과 대응 실무</h3>
+                        <div class="space-y-2.5 text-[13px] text-slate-500 mb-8">
+                            <p class="flex items-center gap-2"><i class="bi bi-calendar3"></i> 신청기간 : 2024.05.01 ~ 05.20</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-clock"></i> 교육기간 : 2024.05.27 ~ 06.16</p>
+                            <p class="flex items-center gap-2"><i class="bi bi-geo-alt"></i> 교육장소 : 부산경영센터</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 bg-keli-blue text-white py-2.5 rounded text-sm font-bold">신청하기</button>
+                            <button class="flex-1 border border-slate-200 text-slate-600 py-2.5 rounded text-sm font-bold">상세보기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-keli-blue transition-all">
+                    <i class="bi bi-chevron-left text-xl"></i>
+                </button>
+                <button class="absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-keli-blue transition-all">
+                    <i class="bi bi-chevron-right text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex justify-center gap-2.5 mt-12">
+                <span class="w-2.5 h-2.5 rounded-full bg-keli-blue"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-200"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Videos & Info Grid (Grouped Section) -->
+    <section class="py-12 border-y border-slate-100" style="background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);">
+        <div class="container-custom">
+            <!-- Videos Part -->
+            <div class="mb-5">
+                <h2 class="text-3xl font-bold text-[#111]">교육동영상</h2>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex justify-between items-start mb-6">
+                <div class="flex flex-wrap gap-2 flex-1">
+                    <button class="px-5 py-2 rounded-full border border-slate-200 bg-white text-[13px] text-slate-600 hover:border-keli-blue hover:text-keli-blue transition-all font-medium shadow-sm">
+                        직장 내 괴롭힘
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-keli-blue bg-blue-50 text-[13px] text-keli-blue transition-all font-bold shadow-sm">
+                        청소년 청년 알바 노동권익
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-slate-200 bg-white text-[13px] text-slate-600 hover:border-keli-blue hover:text-keli-blue transition-all font-medium shadow-sm">
+                        청소년 지도
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-slate-200 bg-white text-[13px] text-slate-600 hover:border-keli-blue hover:text-keli-blue transition-all font-medium shadow-sm">
+                        소규모·산업단지 사업주 교육
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-slate-200 bg-white text-[13px] text-slate-600 hover:border-keli-blue hover:text-keli-blue transition-all font-medium shadow-sm">
+                        알면 좋은 노동법
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-slate-200 bg-white text-[13px] text-slate-600 hover:border-keli-blue hover:text-keli-blue transition-all font-medium shadow-sm">
+                        노동 이야기 - 가사, 돌봄, 배달, 공연 등
+                    </button>
+                    <button class="px-5 py-2 rounded-full border border-keli-blue bg-blue-50 text-[13px] text-keli-blue transition-all font-bold shadow-sm">
+                        웹툰 노동법
+                    </button>
+                </div>
+                <button class="w-10 h-10 border border-slate-200 rounded-full flex items-center justify-center hover:bg-slate-50 transition-all flex-shrink-0 ml-4 text-slate-400">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+
+            <div class="relative mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- Video Card 1 -->
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden card-hover flex flex-col h-full">
+                        <div class="relative aspect-video overflow-hidden group">
+                            <img src="/Users/aaa/.gemini/antigravity/brain/b51d86c9-f56e-456f-a8c2-c54de971d993/keli_video_thumbnails_1778573383748.png" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: top left;">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white text-xl">
+                                    <i class="bi bi-play-fill ml-1"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 right-3 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-medium">18:32</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-[11px] font-bold text-keli-blue">노동법기초</span>
+                            </div>
+                            <h3 class="text-[15px] font-bold text-slate-800 mb-6 leading-snug flex-grow line-clamp-2">2026 핵심 노동법 해설 - 권리와 의무</h3>
+                            <div class="flex justify-between items-center text-[12px] text-slate-400 border-t border-slate-50 pt-4">
+                                <span>조회수 1.2k</span>
+                                <span>2026.04.12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Card 2 -->
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden card-hover flex flex-col h-full">
+                        <div class="relative aspect-video overflow-hidden group">
+                            <img src="/Users/aaa/.gemini/antigravity/brain/b51d86c9-f56e-456f-a8c2-c54de971d993/keli_video_thumbnails_1778573383748.png" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: top right;">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white text-xl">
+                                    <i class="bi bi-play-fill ml-1"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 right-3 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-medium">22:15</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-[11px] font-bold text-keli-blue">산업안전</span>
+                            </div>
+                            <h3 class="text-[15px] font-bold text-slate-800 mb-6 leading-snug flex-grow line-clamp-2">현장 안전 관리의 정석: 사고 예방 가이드</h3>
+                            <div class="flex justify-between items-center text-[12px] text-slate-400 border-t border-slate-50 pt-4">
+                                <span>조회수 850</span>
+                                <span>2026.04.10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Card 3 -->
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden card-hover flex flex-col h-full">
+                        <div class="relative aspect-video overflow-hidden group">
+                            <img src="/Users/aaa/.gemini/antigravity/brain/b51d86c9-f56e-456f-a8c2-c54de971d993/keli_video_thumbnails_1778573383748.png" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center left;">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white text-xl">
+                                    <i class="bi bi-play-fill ml-1"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 right-3 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-medium">15:50</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-[11px] font-bold text-keli-blue">미래고용</span>
+                            </div>
+                            <h3 class="text-[15px] font-bold text-slate-800 mb-6 leading-snug flex-grow line-clamp-2">AI 시대의 일자리 변화와 우리의 대응</h3>
+                            <div class="flex justify-between items-center text-[12px] text-slate-400 border-t border-slate-50 pt-4">
+                                <span>조회수 2.4k</span>
+                                <span>2026.04.05</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Card 4 -->
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden card-hover flex flex-col h-full">
+                        <div class="relative aspect-video overflow-hidden group">
+                            <img src="/Users/aaa/.gemini/antigravity/brain/b51d86c9-f56e-456f-a8c2-c54de971d993/keli_video_thumbnails_1778573383748.png" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center right;">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white text-xl">
+                                    <i class="bi bi-play-fill ml-1"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 right-3 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-medium">29:04</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-[11px] font-bold text-keli-blue">디지털역량</span>
+                            </div>
+                            <h3 class="text-[15px] font-bold text-slate-800 mb-6 leading-snug flex-grow line-clamp-2">업무 효율을 높이는 디지털 도구 활용법</h3>
+                            <div class="flex justify-between items-center text-[12px] text-slate-400 border-t border-slate-50 pt-4">
+                                <span>조회수 1.1k</span>
+                                <span>2026.03.28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Card 5 -->
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden card-hover flex flex-col h-full">
+                        <div class="relative aspect-video overflow-hidden group">
+                            <img src="/Users/aaa/.gemini/antigravity/brain/b51d86c9-f56e-456f-a8c2-c54de971d993/keli_video_thumbnails_1778573383748.png" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: bottom left;">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white text-xl">
+                                    <i class="bi bi-play-fill ml-1"></i>
+                                </div>
+                            </div>
+                            <span class="absolute bottom-3 right-3 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded font-medium">20:11</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex gap-2 mb-3">
+                                <span class="text-[11px] font-bold text-keli-blue">인권교육</span>
+                            </div>
+                            <h3 class="text-[15px] font-bold text-slate-800 mb-6 leading-snug flex-grow line-clamp-2">모두를 위한 인권: 존중받는 일터 만들기</h3>
+                            <div class="flex justify-between items-center text-[12px] text-slate-400 border-t border-slate-50 pt-4">
+                                <span>조회수 3.2k</span>
+                                <span>2026.03.20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="absolute -left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-keli-blue transition-all">
+                    <i class="bi bi-chevron-left text-xl"></i>
+                </button>
+                <button class="absolute -right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-slate-200 bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-keli-blue transition-all">
+                    <i class="bi bi-chevron-right text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Info Grid Part -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Info Button 1 -->
+                <div class="bg-white px-6 py-3 rounded-lg border border-slate-200 flex items-center gap-4 group cursor-pointer hover:border-keli-blue hover:shadow-md transition-all">
+                    <div class="w-10 h-10 bg-blue-50 text-keli-blue rounded-full flex items-center justify-center text-lg shrink-0 group-hover:bg-blue-100 transition-colors">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-[14px] text-[#333] whitespace-nowrap overflow-hidden text-ellipsis">교육교재</h4>
+                    </div>
+                    <i class="bi bi-chevron-right text-slate-200 group-hover:text-keli-blue shrink-0"></i>
+                </div>
+                <!-- Info Button 2 -->
+                <div class="bg-white px-6 py-3 rounded-lg border border-slate-200 flex items-center gap-4 group cursor-pointer hover:border-keli-blue hover:shadow-md transition-all">
+                    <div class="w-10 h-10 bg-blue-50 text-keli-blue rounded-full flex items-center justify-center text-lg shrink-0 group-hover:bg-blue-100 transition-colors">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-[14px] text-[#333] whitespace-nowrap overflow-hidden text-ellipsis">연구보고서</h4>
+                    </div>
+                    <i class="bi bi-chevron-right text-slate-200 group-hover:text-keli-blue shrink-0"></i>
+                </div>
+                <!-- Info Button 3 -->
+                <div class="bg-white px-6 py-3 rounded-lg border border-slate-200 flex items-center gap-4 group cursor-pointer hover:border-keli-blue hover:shadow-md transition-all">
+                    <div class="w-10 h-10 bg-blue-50 text-keli-blue rounded-full flex items-center justify-center text-lg shrink-0 group-hover:bg-blue-100 transition-colors">
+                        <i class="bi bi-pc-display"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-[14px] text-[#333] whitespace-nowrap overflow-hidden text-ellipsis">교육프로그램</h4>
+                    </div>
+                    <i class="bi bi-chevron-right text-slate-200 group-hover:text-keli-blue shrink-0"></i>
+                </div>
+                <!-- Info Button 4 -->
+                <div class="bg-white px-6 py-3 rounded-lg border border-slate-200 flex items-center gap-4 group cursor-pointer hover:border-keli-blue hover:shadow-md transition-all">
+                    <div class="w-10 h-10 bg-blue-50 text-keli-blue rounded-full flex items-center justify-center text-lg shrink-0 group-hover:bg-blue-100 transition-colors">
+                        <i class="bi bi-person-video3"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-[14px] text-[#333] whitespace-nowrap">청소년노동교육콘텐츠</h4>
+                    </div>
+                    <i class="bi bi-chevron-right text-slate-200 group-hover:text-keli-blue shrink-0"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice & AI Banner -->
+    <section class="py-12 bg-white">
+        <div class="container-custom">
+            <div class="flex flex-col lg:flex-row gap-16 items-end">
+                <div class="flex-1">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl font-bold text-[#111]">교육공지</h2>
+                        <button class="w-10 h-10 border border-slate-200 rounded-full flex items-center justify-center hover:bg-slate-50 transition-all text-slate-400">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <!-- Notice Item 1 -->
+                        <div class="bg-slate-50 p-7 rounded-xl border border-transparent hover:border-slate-200 transition-all cursor-pointer">
+                            <span class="text-[11px] text-keli-blue font-bold block mb-3">• 공지사항</span>
+                            <h4 class="text-[15px] font-bold text-slate-800 line-clamp-2 h-10 mb-6">2026년 직장 내 괴롭힘 관련 교육과정 안내</h4>
+                            <span class="text-[12px] text-slate-400">2026-04-16</span>
+                        </div>
+                        <!-- Notice Item 2 -->
+                        <div class="bg-slate-50 p-7 rounded-xl border border-transparent hover:border-slate-200 transition-all cursor-pointer">
+                            <span class="text-[11px] text-keli-blue font-bold block mb-3">• 공지사항</span>
+                            <h4 class="text-[15px] font-bold text-slate-800 line-clamp-2 h-10 mb-6">2026년 고용서비스 민간위탁기관 교육 수강안내</h4>
+                            <span class="text-[12px] text-slate-400">2026-04-15</span>
+                        </div>
+                        <!-- Notice Item 3 -->
+                        <div class="bg-slate-50 p-7 rounded-xl border border-transparent hover:border-slate-200 transition-all cursor-pointer">
+                            <span class="text-[11px] text-keli-blue font-bold block mb-3">• 공지사항</span>
+                            <h4 class="text-[15px] font-bold text-slate-800 line-clamp-2 h-10 mb-6">2026년 노사관계전문가과정 교육참가안내</h4>
+                            <span class="text-[12px] text-slate-400">2026-04-09</span>
+                        </div>
+                        <!-- Notice Item 4 -->
+                        <div class="bg-slate-50 p-7 rounded-xl border border-transparent hover:border-slate-200 transition-all cursor-pointer">
+                            <span class="text-[11px] text-keli-blue font-bold block mb-3">• 보도자료</span>
+                            <h4 class="text-[15px] font-bold text-slate-800 line-clamp-2 h-10 mb-6">한국고용노동교육원, 청소년 노동인권 교육 확대</h4>
+                            <span class="text-[12px] text-slate-400">2026-04-05</span>
+                        </div>
+                        <!-- Notice Item 5 -->
+                        <div class="bg-slate-50 p-7 rounded-xl border border-transparent hover:border-slate-200 transition-all cursor-pointer">
+                            <span class="text-[11px] text-keli-blue font-bold block mb-3">• 공지사항</span>
+                            <h4 class="text-[15px] font-bold text-slate-800 line-clamp-2 h-10 mb-6">시스템 정기 점검에 따른 서비스 일시 중단 안내</h4>
+                            <span class="text-[12px] text-slate-400">2026-04-01</span>
+                        </div>
+                        <!-- Notice Item 6 -->
+                        <div class="bg-slate-50 p-7 rounded-xl border border-transparent hover:border-slate-200 transition-all cursor-pointer">
+                            <span class="text-[11px] text-keli-blue font-bold block mb-3">• 공지사항</span>
+                            <h4 class="text-[15px] font-bold text-slate-800 line-clamp-2 h-10 mb-6">2026년 상반기 교육 만족도 조사 실시 안내</h4>
+                            <span class="text-[12px] text-slate-400">2026-03-28</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-[400px]">
+                    <div class="bg-[#0f172a] rounded-2xl overflow-hidden relative aspect-square shadow-2xl group">
+                        <img src="/Users/aaa/.gemini/antigravity/brain/b51d86c9-f56e-456f-a8c2-c54de971d993/keli_ai_contest_banner_1778571441096.png" 
+                             alt="AI Contest" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-10 flex flex-col justify-between text-white">
+                            <div class="flex justify-end gap-3 text-xs opacity-60">
+                                <i class="bi bi-chevron-left cursor-pointer"></i>
+                                <span>1 / 3</span>
+                                <i class="bi bi-chevron-right cursor-pointer"></i>
+                                <i class="bi bi-pause cursor-pointer"></i>
+                            </div>
+                            <!-- Text is already in generated image, but we can overlay clean UI if needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#212529] text-white py-12">
+        <div class="container-custom">
+            <!-- Footer Links -->
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] mb-10">
+                <a href="#" class="text-[#ffb400] font-bold">개인정보 처리방침</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">영상정보처리기기 운영·관리방침</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">이용약관</a>
+                <span class="text-white/20 text-[12px]">|</span>
+                <a href="#" class="text-white/80 hover:text-white transition-colors">관련사이트 한 눈에 보기</a>
+            </div>
+            
+            <!-- Footer Content -->
+            <div class="flex flex-col gap-6">
+                <!-- Logo -->
+                <div class="opacity-30 hover:opacity-50 transition-opacity">
+                    <img src="img_signature_pc_2.png" alt="KELI Footer Logo" class="h-10">
+                </div>
+                
+                <!-- Info & Copyright -->
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+                    <div class="text-[13px] text-white/50 leading-relaxed font-light">
+                        <p class="mb-1">Address : 12774) 경기도 광주시 봉골길 229 (문형동) 사업자등록번호 720-82-00342 | TEL 031-760-7700</p>
+                        <p>COPYRIGHT 2022 Korea Employment and Labor Educational Institute. All Rights Reserved.</p>
+                    </div>
+                    
+                    <!-- Family Site (Keep for functionality, styled subtly) -->
+                    <div class="relative shrink-0">
+                        <select class="bg-transparent border border-white/10 rounded px-5 py-2.5 text-[12px] text-white/40 outline-none hover:border-white/20 transition-all appearance-none pr-12 min-w-[220px]">
+                            <option>관련사이트 바로가기</option>
+                        </select>
+                        <i class="bi bi-chevron-up absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-white/20"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GNB 메가 메뉴 토글 스크립트
+        const gnbToggle = document.getElementById('gnb-menu-toggle');
+        const gnbMegaMenu = document.getElementById('gnb-mega-menu');
+
+        gnbToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            gnbMegaMenu.classList.toggle('hidden');
+        });
+
+        // 빈 공간 클릭 시 닫기
+        document.addEventListener('click', function(e) {
+            if (!gnbMegaMenu.contains(e.target) && e.target !== gnbToggle) {
+                gnbMegaMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="format-detection" content="telephone=no" />
+		<title id="neibisTopTitle">NEIBIS | 로그인</title>
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+		
+		<!-- FontAwesome Icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+						},
+					}
+				}
+			}
+		</script>
+		
+		<style>
+			body {
+				font-family: 'Inter', 'Noto Sans KR', sans-serif;
+				background-color: #f1f5f9;
+			}
+		</style>
+	</head>
+	<body class="min-h-screen flex flex-col justify-between items-center bg-[#f3f4f6] py-12 px-4">
+		
+		<!-- 상단 빈 공간용 (가운데 정렬 밸런스) -->
+		<div></div>
+
+		<!-- 로그인 카드 -->
+		<div class="w-full max-w-[500px] bg-white rounded-[24px] p-10 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-slate-100/50">
+			
+			<!-- 로고 및 시스템명 -->
+			<div class="flex items-center gap-2 mb-6">
+				<img src="img-logo.png" alt="한국고용노동교육원 로고" class="h-6 object-contain" />
+				<span class="text-xs font-semibold text-slate-800 tracking-tight">한국고용노동교육원 <span class="text-slate-400 font-normal">관리시스템</span></span>
+			</div>
+
+			<!-- 타이틀 및 설명 -->
+			<div class="mb-8">
+				<h1 class="text-[32px] font-bold text-slate-900 leading-none">로그인</h1>
+				<p class="text-xs text-slate-400 mt-3 font-medium">로그인 후 콘텐츠를 손쉽게 관리해보세요.</p>
+			</div>
+
+			<!-- 로그인 폼 -->
+			<form id="loginForm" class="space-y-5">
+				<!-- 아이디 -->
+				<div class="space-y-2">
+					<label for="userId" class="text-[11px] font-bold text-slate-700">아이디</label>
+					<input
+						type="text"
+						id="userId"
+						value="neibis"
+						placeholder="아이디를 입력해주세요."
+						class="w-full border border-slate-200 rounded-lg px-4 py-3.5 text-xs text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition bg-white"
+						autocomplete="username"
+						required
+					/>
+				</div>
+
+				<!-- 비밀번호 -->
+				<div class="space-y-2">
+					<label for="userPw" class="text-[11px] font-bold text-slate-700">비밀번호</label>
+					<div class="relative">
+						<input
+							type="password"
+							id="userPw"
+							placeholder="비밀번호를 입력해주세요."
+							class="w-full border border-slate-200 rounded-lg pl-4 pr-10 py-3.5 text-xs text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition bg-white"
+							autocomplete="current-password"
+							required
+						/>
+						<button type="button" id="togglePw" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition">
+							<i class="fa-regular fa-eye text-sm"></i>
+						</button>
+					</div>
+				</div>
+
+				<!-- 아이디 기억 -->
+				<div class="pt-1">
+					<label class="inline-flex items-center gap-2 cursor-pointer">
+						<input type="checkbox" id="inputKeep" checked class="rounded border-slate-300 text-blue-600 focus:ring-blue-500 w-4 h-4 transition accent-blue-600">
+						<span class="text-[11px] text-slate-700 font-bold select-none">아이디 기억</span>
+					</label>
+				</div>
+
+				<!-- 에러 메시지 가이드 -->
+				<p class="text-[11px] text-red-500 font-medium hidden" id="capsLockWarning">
+					<i class="fa-solid fa-circle-exclamation mr-1"></i>
+					<span id="message-area">Caps Lock이 켜져있어요</span>
+				</p>
+
+				<!-- 로그인 버튼 -->
+				<div class="pt-4">
+					<button type="submit" id="login-button" class="w-full py-4 bg-[#3b82f6] hover:bg-blue-600 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-blue-500/10 active:scale-[0.98]">
+						로그인
+					</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- 하단 푸터 -->
+		<div class="text-center mt-12">
+			<p class="text-[9px] text-slate-400 font-mono tracking-wider">
+				COPYRIGHT SINCE 2023 
+				<a href="https://inseq.co.kr/ko/index.do" class="underline hover:text-slate-600" target="_blank" title="새창 열림">INSEQUENCE Co., Ltd.</a> 
+				ALL RIGHTS RESERVED. POWERED BY 
+				<a href="https://inseq.co.kr/ko/cntnts/i-33/web.do" class="underline hover:text-slate-600 font-semibold" target="_blank" title="새창 열림">NEIBIS CMS.</a>
+			</p>
+		</div>
+
+		<script>
+			// 비밀번호 표시 토글
+			const togglePwBtn = document.getElementById('togglePw');
+			const userPwInput = document.getElementById('userPw');
+			
+			togglePwBtn.addEventListener('click', () => {
+				const isPassword = userPwInput.type === 'password';
+				userPwInput.type = isPassword ? 'text' : 'password';
+				
+				const icon = togglePwBtn.querySelector('i');
+				if (isPassword) {
+					icon.classList.remove('fa-regular', 'fa-eye');
+					icon.classList.add('fa-solid', 'fa-eye-slash');
+				} else {
+					icon.classList.remove('fa-solid', 'fa-eye-slash');
+					icon.classList.add('fa-regular', 'fa-eye');
+				}
+			});
+
+			// 로그인 폼 제출 이벤트 처리
+			document.getElementById('loginForm').addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				const loginBtn = document.getElementById('login-button');
+				
+				if(document.getElementById('inputKeep').checked){
+					localStorage.setItem("idSave", document.getElementById('userId').value);
+				} else {
+					localStorage.removeItem("idSave");
+				}
+
+				loginBtn.disabled = true;
+				loginBtn.textContent = '로그인 중...';
+
+				setTimeout(() => {
+					window.location.href = 'contest-detail.html';
+				}, 600);
+			});
+
+			// 아이디 저장 복원
+			window.addEventListener('DOMContentLoaded', () => {
+				const savedId = localStorage.getItem("idSave");
+				if(savedId) {
+					document.getElementById('userId').value = savedId;
+					document.getElementById('inputKeep').checked = true;
+				}
+			});
+
+			// CapsLock 감지
+			function checkCapsLock(event) {
+				const isCapsLock = event.getModifierState('CapsLock');
+				const warning = document.getElementById('capsLockWarning');
+				if (isCapsLock) {
+					warning.classList.remove('hidden');
+				} else {
+					warning.classList.add('hidden');
+				}
+			}
+
+			document.getElementById('userId').addEventListener('keyup', checkCapsLock);
+			document.getElementById('userPw').addEventListener('keyup', checkCapsLock);
+		</script>
+	</body>
+</html>
