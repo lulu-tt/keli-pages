@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(MaterialIcons-Regular.woff2) format('woff2'),
+  url(MaterialIcons-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(MaterialIconsOutlined-Regular.woff2) format('woff2'),
+  url(MaterialIconsOutlined-Regular.woff) format('woff')
+}
+
+.m_icon, .m_icon_out {vertical-align:middle;text-align:center;display:inline-block;line-height:1;}
+.m_icon:before, .m_icon_out:before {
+font-family:'Material Icons';
+font-weight: normal;
+font-style: normal;
+font-size: 24px;
+line-height: 1;
+letter-spacing: normal;
+text-transform: none;
+display: inline-block;
+white-space: nowrap;
+word-wrap: normal;
+direction: ltr;
+-webkit-font-feature-settings: 'liga';
+-webkit-font-smoothing: antialiased;
+vertical-align:top;
+}
+.m_icon_out:before {font-family:'Material Icons Outlined';}
+.icc::before{font-family:'Material Icons Outlined';}
+/* custom */
+.m_icon.notifications:before, .m_icon_out.notifications:before {content:"\e7f4";}
+.m_icon.picture_as_pdf:before, .m_icon_out.picture_as_pdf:before {content:"\e415";}
+.m_icon.more_vert:before, .m_icon_out.more_vert:before {content:"\e5d4";}
+.m_icon.timer:before, .m_icon_out.timer:before {content:"\e425";}
+.m_icon.assignment:before, .m_icon_out.assignment:before {content:"\e85d";}
+.m_icon.fact_check:before, .m_icon_out.fact_check:before {content:"\f0c5";}
+.m_icon.manage_accounts:before, .m_icon_out.manage_accounts:before {content:"\f02e";}
+.m_icon.settings:before, .m_icon_out.settings:before {content:"\e8b8";}
+.m_icon.history_edu:before, .m_icon_out.history_edu:before {content:"\ea3e";}
+.m_icon.summarize:before, .m_icon_out.summarize:before {content:"\f071";}
+.m_icon.person_outline:before, .m_icon_out.person_outline:before {content:"\e7ff";}
+.m_icon.notification_important:before, .m_icon_out.notification_important:before {content:"\e004";}
+.m_icon.circle_notifications:before, .m_icon_out.circle_notifications:before {content:"\e994";}
+.m_icon.new_releases:before, .m_icon_out.new_releases:before {content:"\e031";}
+.m_icon.account_circle:before {content:"\e853";}
+.m_icon.lock:before, .m_icon_out.lock:before {content:"\e897";}
+.m_icon.clear:before {content:"\e14c";}
+.m_icon.pause:before {content:"\e034";}
+.m_icon.play:before {content:"\e037";}
+.m_icon.close:before {content:"\e5cd";}
+.m_icon.menu::before {content:"\e5d2";}
+.icc.arrow_up::before{content:"\e316";}
+.icc.arrow_down::before{content:"\e313";}
+.icc.visibility::before{content:"\e89e";}
+.icc.visibility::before{content:"\e89e";}
