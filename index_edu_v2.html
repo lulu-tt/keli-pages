@@ -141,6 +141,41 @@
         @media(max-width:1100px){#eduHero .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
         @media(max-width:640px){.top-tab{font-size:13px;padding:0 10px}header > .container-custom{height:72px}header img{height:32px!important;max-width:180px}#eduHero{padding:40px 0}#eduHero h2{font-size:30px}#eduHero h2+p{font-size:15px}#eduHero .max-w-2xl{gap:8px}#eduHero input{font-size:14px;padding-left:14px}#eduSearchButton{padding:0 18px}#eduHero .grid{grid-template-columns:repeat(2,minmax(0,1fr))}#eduReco,#eduVideos,#eduNews{padding:44px 0}#eduReco h2,#eduVideos h2,#eduNews h2{font-size:30px}}
 
+
+        /* 작은 화면에서 헤더, 검색 및 콘텐츠가 자연스럽게 재배치되도록 처리 */
+        @media(max-width:1023px){
+          header .container-custom{min-width:0}
+          #eduReco .container-custom > .flex:first-of-type{align-items:flex-start}
+          #eduReco .container-custom > .flex:first-of-type > .flex:last-child{flex-wrap:wrap}
+        }
+        @media(max-width:767px){
+          body > div:first-of-type > .container-custom{display:block!important;width:100%;overflow:hidden}
+          body > div:first-of-type > .container-custom > div:first-child{display:flex;width:100%}
+          body > div:first-of-type > .container-custom > div:first-child .top-tab{flex:1;justify-content:center;white-space:nowrap;min-width:0;height:42px;font-size:13px;padding:0 4px}
+          body > div:first-of-type > .container-custom > div:nth-child(2){display:none}
+          header > .container-custom{gap:8px;padding-left:16px;padding-right:16px}
+          header > .container-custom > div:first-child{min-width:0;gap:0}
+          header > .container-custom > div:first-child > div:first-child{gap:8px;min-width:0}
+          header img{max-width:min(48vw,180px)}
+          header .w-\[1px\]{margin:0}
+          header .tracking-tight{white-space:nowrap;font-size:13px}
+          header > .container-custom > div:last-child{gap:14px}
+          #eduHero h2{font-size:clamp(25px,7vw,30px);word-break:keep-all}
+          #eduHero h2+p{word-break:keep-all}
+          #eduHero .max-w-2xl{width:100%;min-width:0}
+          #eduHero .max-w-2xl > div{min-width:0}
+          #eduHero input{width:100%;min-width:0;padding-right:54px}
+          #eduHero a[href="keli_ai.html"]{padding:0 13px;font-size:14px}
+          #eduHero .mt-6{align-items:center}
+          #eduHero .mt-6 > div{justify-content:center}
+          #eduReco .container-custom > .flex:first-of-type > .flex:last-child{width:100%;gap:8px}
+          #eduReco h2,#eduVideos h2,#eduNews h2{font-size:26px;line-height:1.35;word-break:keep-all}
+          #eduVideos .flex.justify-between.items-start{flex-wrap:wrap;gap:16px}
+          #eduNews .flex.items-center.gap-3{flex-wrap:wrap}
+          #gnb-mega-menu .grid{grid-template-columns:1fr;gap:16px}
+        }
+
+        @media(max-width:1023px){#eduVideos button.absolute{display:none} #eduVideos .container-custom{min-width:0} }
     </style>
 </head>
 <body class="antialiased">

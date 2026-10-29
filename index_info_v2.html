@@ -10004,6 +10004,24 @@ header[hidden]{display:none !important;}
 /* 검색창 아래 자료 유형 카드는 숨기고 검색 영역 여백을 정리 */
 #infoApp #viewMain #secStat[hidden]{display:none;}
 #infoApp #viewMain .sband{padding-bottom:56px;}
+
+/* 모바일 화면: 추천 영역과 하위 콘텐츠의 가독성 */
+@media(max-width:700px){
+ #infoApp #viewMain .drum-head{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+ #infoApp #viewMain .drum-head > div:first-child{flex:1 1 100%;min-width:0}
+ #infoApp #viewMain .drum-head h2{font-size:26px;line-height:1.35;word-break:keep-all}
+ #infoApp #viewMain .drum-acts{margin-left:auto}
+ #infoApp #viewMain .reco-card{min-width:0}
+ #infoApp #viewMain .reco-title{overflow-wrap:anywhere}
+ #infoApp #viewMain .reco-image{width:34%;min-width:100px}
+ #infoApp #viewMain .mini-hd h3,#infoApp #viewMain .vid-head h2,#infoApp #viewMain #secNews .sec-tit{font-size:26px;line-height:1.35;word-break:keep-all}
+ #infoApp #viewMain .vid-ctl{width:100%;justify-content:space-between}
+ #infoApp #viewMain .vid-sort{gap:5px}
+ #infoApp #viewMain .vid-sort button{min-height:40px;padding:5px 10px}
+ #infoApp #viewMain .vid-sw .swiper-slide{width:min(78vw,320px)}
+ #infoApp #viewMain .mc-it .ti{white-space:normal;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+ #infoApp #viewMain .hero2 .lead{word-break:keep-all}
+}
 </style>
 </head>
 <body>
